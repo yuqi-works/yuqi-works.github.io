@@ -306,6 +306,7 @@ footer{
 .re-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px}
 .re-card{border-radius:var(--radius);overflow:hidden;background:rgba(28,26,22,.05);min-height:240px;position:relative}
 .re-card.tall{min-height:340px}
+.re-card{cursor:pointer}
 .re-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.6,.2,1)}
 .re-card:hover img{transform:scale(1.04)}
 .re-note{margin-top:44px;font-size:12px;letter-spacing:.1em;color:var(--ink-faint)}
@@ -314,7 +315,7 @@ footer{
 
 /* ============ DRONE ============ */
 .drone-grid{display:grid;grid-template-columns:1fr;gap:clamp(14px,2.4vw,26px)}
-.drone-shot{border-radius:var(--radius);overflow:hidden;background:rgba(28,26,22,.05);aspect-ratio:21/9;position:relative}
+.drone-shot{border-radius:var(--radius);overflow:hidden;background:rgba(28,26,22,.05);aspect-ratio:21/9;position:relative;cursor:pointer}
 .drone-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.6,.2,1)}
 .drone-shot:hover img{transform:scale(1.02)}
 @media (max-width: 620px){.drone-shot{aspect-ratio:16/9}}
@@ -1144,16 +1145,10 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
     const card = list[idx];
     if (!card) return;
     img.src = card.querySelector('img').src;
-    cap.textContent = card.querySelector('h3').textContent;
+    const h = card.querySelector('h3');
+    cap.textContent = h ? h.textContent : '';
   };
-  const open = (card) => {
-    list = visible();
-    idx = list.indexOf(card);
-    if (idx < 0) return;
-    show();
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
+
   const close = () => {
     lb.classList.remove('open');
     document.body.style.overflow = '';
@@ -1165,8 +1160,23 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
     show();
   };
 
-  document.querySelectorAll('.work-card .thumb').forEach(t => {
-    t.addEventListener('click', () => open(t.closest('.work-card')));
+  const groups = [
+    { trigger: '.work-card .thumb', group: '.work-card', filtered: true },
+    { trigger: '.re-card', group: '.re-card', filtered: false },
+    { trigger: '.drone-shot', group: '.drone-shot', filtered: false },
+  ];
+  const openCard = (card, groupSel, filtered) => {
+    list = filtered ? visible() : [...document.querySelectorAll(groupSel)];
+    idx = list.indexOf(card);
+    if (idx < 0) return;
+    show();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  groups.forEach(g => {
+    document.querySelectorAll(g.trigger).forEach(t => {
+      t.addEventListener('click', () => openCard(t.closest(g.group), g.group, g.filtered));
+    });
   });
   document.getElementById('lb-close').addEventListener('click', close);
   document.getElementById('lb-prev').addEventListener('click', () => step(-1));
