@@ -381,6 +381,28 @@ footer{
   html{scroll-behavior:auto}
   *,*::before,*::after{transition:none!important;animation:none!important}
 }
+
+/* ============ LIGHTBOX ============ */
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(5,5,6,.95);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s ease}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lb-img{max-width:92vw;max-height:86vh;object-fit:contain;
+  box-shadow:0 24px 80px rgba(0,0,0,.55);opacity:0;transition:opacity .2s}
+.lightbox.open .lb-img{opacity:1}
+.lb-caption{position:absolute;bottom:22px;left:0;right:0;text-align:center;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)}
+.lb-close{position:absolute;top:18px;right:22px;background:none;border:0;
+  color:var(--ink-dim);font-size:30px;line-height:1;cursor:pointer;z-index:2;transition:color .2s}
+.lb-close:hover{color:var(--ink)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:0;
+  color:var(--ink-dim);font-size:44px;cursor:pointer;padding:18px;z-index:2;transition:color .2s;line-height:1}
+.lb-nav:hover{color:var(--ink)}
+.lb-prev{left:10px}.lb-next{right:10px}
+.lb-hint{position:absolute;top:18px;left:22px;font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--ink-faint)}
+@media (max-width: 620px){.lb-nav{font-size:32px;padding:12px}}
+
 </style>
 </head>
 <body>
@@ -823,6 +845,17 @@ footer{
   <span data-i18n="footNote">Shot on location across the Pacific Northwest</span>
 </footer>
 
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+  <span class="lb-hint" data-i18n="lbHint">Gallery</span>
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <img class="lb-img" id="lb-img" alt="photo">
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
+
 <script>
 /* ============ i18n ============ */
 const I18N = {
@@ -895,7 +928,7 @@ const I18N = {
     cred3k:"Credential", cred3v:"Commercial Drone Pilot", cred4k:"Gig Highlight", cred4v:"Diamond Rally Crew",
     cred5k:"Gear", cred5v:"Sony A7R III · Z-CAM E2-F6", cred6k:"Base", cred6v:"Vancouver, BC",
     contactTitle:"Let's shoot<br><em>your car.</em>",
-    mailCta:"yuqiworks@gmail.com", quoteTitle:"Request a Quote", quoteName:"Name", quoteEmail:"Email", quoteType:"Project Type", quoteDate:"Preferred Date", quoteMsg:"Project Details", quoteSend:"Send Request", footNote:"Shot on location across the Pacific Northwest"
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"Request a Quote", quoteName:"Name", quoteEmail:"Email", quoteType:"Project Type", quoteDate:"Preferred Date", quoteMsg:"Project Details", quoteSend:"Send Request", footNote:"Shot on location across the Pacific Northwest", lbHint:"Gallery"
   },
   zh: {
     navWork:"作品", navRe:"房产", navDrone:"航拍", navGear:"器材", navAbout:"关于", navContact:"联系", fAll:"全部", fCar:"汽车", fStreet:"街头", fEvent:"活动",
@@ -966,7 +999,7 @@ const I18N = {
     cred3k:"资质", cred3v:"商业无人机执照", cred4k:"高光履历", cred4v:"Diamond Rally 团队",
     cred5k:"器材", cred5v:"索尼 A7R III · Z-CAM E2-F6", cred6k:"常驻", cred6v:"温哥华 BC",
     contactTitle:"来拍<br><em>你的车。</em>",
-    mailCta:"yuqiworks@gmail.com", quoteTitle:"获取报价", quoteName:"姓名", quoteEmail:"邮箱", quoteType:"项目类型", quoteDate:"期望日期", quoteMsg:"项目详情", quoteSend:"发送请求", footNote:"拍摄地：太平洋西北海岸各处"
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"获取报价", quoteName:"姓名", quoteEmail:"邮箱", quoteType:"项目类型", quoteDate:"期望日期", quoteMsg:"项目详情", quoteSend:"发送请求", footNote:"拍摄地：太平洋西北海岸各处", lbHint:"作品集"
   }
 };
 function applyLang(lang){
@@ -1094,6 +1127,63 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
       status.className = 'qf-status err';
     }
   });
+})();
+
+
+/* ============ LIGHTBOX ============ */
+(function(){
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  const img = document.getElementById('lb-img');
+  const cap = document.getElementById('lb-caption');
+  let list = [], idx = 0;
+
+  const visible = () => [...document.querySelectorAll('.work-card')]
+    .filter(c => c.style.display !== 'none');
+  const show = () => {
+    const card = list[idx];
+    if (!card) return;
+    img.src = card.querySelector('img').src;
+    cap.textContent = card.querySelector('h3').textContent;
+  };
+  const open = (card) => {
+    list = visible();
+    idx = list.indexOf(card);
+    if (idx < 0) return;
+    show();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    img.src = '';
+  };
+  const step = (d) => {
+    if (!list.length) return;
+    idx = (idx + d + list.length) % list.length;
+    show();
+  };
+
+  document.querySelectorAll('.work-card .thumb').forEach(t => {
+    t.addEventListener('click', () => open(t.closest('.work-card')));
+  });
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', () => step(-1));
+  document.getElementById('lb-next').addEventListener('click', () => step(1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+  });
+  let tx = 0;
+  lb.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
 })();
 
 </script>
