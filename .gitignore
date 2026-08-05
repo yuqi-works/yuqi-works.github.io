@@ -21,3 +21,4 @@ re_picks.json
 *.cjs
 *.sh
 check.js
+select.html
