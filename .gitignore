@@ -1,0 +1,23 @@
+# build/tool files — not part of the published site
+photos/full/
+photos/ig_*.jpg
+select/
+select_auto/
+select_super/
+select_re/
+select_street/
+shots/
+shots_hd/
+shots_m/
+video/
+index-v1-bold.html
+models.html
+models_re.html
+models_street.html
+exif_dump.json
+picks.json
+re_picks.json
+*.py
+*.cjs
+*.sh
+check.js

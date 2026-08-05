@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-root>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YUQI WORKS — Automotive Photography, Vancouver BC</title>
+<meta name="description" content="Yuqi — Vancouver-based automotive photographer & commercial drone pilot. 10+ years behind the lens, Diamond Rally crew.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  /* dark (automotive) palette — defaults */
+  --bg:      #0b0b0d;
+  --bg-2:    #101013;
+  --ink:     #f5f3ee;
+  --ink-dim: #8f8c84;
+  --ink-faint:#5c5a54;
+  --line:    rgba(245,243,238,.10);
+  --accent:  #e8963c;
+  /* light (real estate) palette — applied via scroll lerp */
+  --bg-l:      #f4f1ea;
+  --bg-2-l:    #ece8de;
+  --ink-l:     #1c1a16;
+  --ink-dim-l: #6b6558;
+  --ink-faint-l:#9a9282;
+  --line-l:    rgba(28,26,22,.14);
+  --accent-l:  #a8742a;
+  --radius:  1px;
+  --font-d:  'Archivo', 'Inter', system-ui, sans-serif;
+  --font-b:  'Inter', system-ui, sans-serif;
+  --pad:     clamp(24px, 6vw, 96px);
+}
+body{transition:background-color .15s linear, color .15s linear}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-b);
+  font-size:15px;
+  line-height:1.75;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:rgba(232,150,60,.28);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ============ TOP BAR ============ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px var(--pad);
+  background:rgba(11,11,13,.86);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  font-family:var(--font-d);font-weight:500;
+  font-size:16px;letter-spacing:.34em;text-transform:uppercase;
+}
+.brand em{font-style:normal;color:var(--accent)}
+.nav{display:flex;align-items:center;gap:34px}
+.nav a{
+  font-size:14px;font-weight:300;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-dim);transition:color .2s;
+}
+.nav a:hover{color:var(--ink)}
+.nav-toggle{display:none}
+.lang{
+  display:flex;gap:2px;margin-left:8px;
+  border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;
+}
+.lang button{
+  background:transparent;border:0;cursor:pointer;
+  color:var(--ink-dim);font-family:var(--font-b);font-weight:300;font-size:13px;
+  padding:8px 14px;letter-spacing:.16em;transition:all .2s;
+}
+.lang button[aria-pressed="true"]{color:var(--ink);background:rgba(245,243,238,.08)}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:flex-end;
+  padding:0 var(--pad) clamp(56px, 10vh, 120px);
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(1100px 480px at 80% -8%, rgba(232,150,60,.07), transparent 60%),
+    radial-gradient(900px 460px at 8% 110%, rgba(90,120,160,.08), transparent 60%),
+    linear-gradient(180deg, #0a0b0e 0%, #0d0f13 55%, #121418 100%);
+}
+.hero-bg::after{
+  content:"";position:absolute;left:0;right:0;bottom:24%;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(232,150,60,.35), transparent);
+}
+.hero-watermark{
+  position:absolute;right:-2%;top:14%;z-index:0;
+  font-family:var(--font-d);font-weight:100;
+  font-size:clamp(110px, 20vw, 340px);line-height:.8;
+  letter-spacing:-.02em;color:transparent;
+  -webkit-text-stroke:.5px rgba(245,243,238,.05);
+  white-space:nowrap;user-select:none;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;max-width:1200px;width:100%}
+.kicker{
+  font-size:12px;font-weight:400;letter-spacing:.44em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:30px;
+}
+.hero h1{
+  font-family:var(--font-d);font-weight:700;
+  font-size:clamp(40px, 7vw, 96px);
+  line-height:1.02;letter-spacing:.01em;text-transform:uppercase;
+  max-width:15ch;margin-bottom:32px;
+}
+.hero h1 span{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(245,243,238,.55);
+  font-weight:500;
+}
+.hero-sub{
+  color:var(--ink-dim);font-weight:300;
+  font-size:clamp(14px,1.35vw,16px);line-height:2;
+  max-width:56ch;margin-bottom:44px;
+}
+.hero-sub strong{color:var(--ink);font-weight:400}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:16px 38px;
+  font-family:var(--font-d);font-weight:500;font-size:13px;
+  letter-spacing:.22em;text-transform:uppercase;
+  border-radius:var(--radius);transition:all .25s;cursor:pointer;
+}
+.btn-solid{background:var(--accent);color:#0b0b0d}
+.btn-solid:hover{background:#f0a64f}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+.hero-facts{
+  display:flex;gap:clamp(32px,5vw,80px);margin-top:clamp(48px,8vh,88px);
+  flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px;
+}
+.hero-facts .fact b{
+  display:block;font-family:var(--font-d);font-weight:200;
+  font-size:clamp(24px,2.8vw,40px);letter-spacing:.05em;text-transform:uppercase;font-weight:700;
+}
+.hero-facts .fact span{
+  font-size:12px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);
+}
+
+/* ============ SECTION SCAFFOLD ============ */
+section{padding:clamp(90px,12vw,180px) var(--pad)}
+.sect-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:32px;margin-bottom:clamp(48px,6vw,84px);
+  border-bottom:1px solid var(--line);padding-bottom:28px;
+}
+.sect-head .no{font-family:var(--font-d);font-weight:300;color:var(--accent);font-size:12px;letter-spacing:.34em}
+.sect-head h2{
+  font-family:var(--font-d);font-weight:650;text-transform:uppercase;
+  font-size:clamp(30px,4.4vw,54px);letter-spacing:.02em;line-height:1.12;
+  margin-top:14px;
+}
+.sect-head p{color:var(--ink-faint);max-width:42ch;font-size:13px;font-weight:300;line-height:1.9}
+
+/* ============ GALLERY ============ */
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:10px;
+  grid-auto-flow:dense;
+  gap:10px;
+}
+.work-card{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  grid-row:span 10; /* default: 3:2 landscape */
+}
+.work-card.lg{grid-column:span 2; grid-row:span 16}   /* 16:9 wide */
+.work-card.tall{grid-row:span 21}                     /* 2:3 portrait */
+.work-card .thumb{
+  position:absolute;inset:0;overflow:hidden;
+  background:#0e0e11;
+}
+.work-card .thumb img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s cubic-bezier(.2,.6,.2,1);
+  filter:saturate(.92) contrast(1.02);
+}
+.work-card:hover .thumb img{transform:scale(1.04)}
+/* scene variants — replace these blocks with real <img> later */
+.scene-night{background:radial-gradient(720px 300px at 70% 100%, rgba(232,150,60,.16), transparent 55%), linear-gradient(160deg,#0a0d13 0%,#131a24 60%,#1a222e 100%)}
+.scene-gold {background:radial-gradient(720px 320px at 30% 90%, rgba(214,150,70,.20), transparent 55%), linear-gradient(160deg,#120d07 0%,#261b0e 55%,#312414 100%)}
+.scene-tunnel{background:radial-gradient(760px 400px at 50% 120%, rgba(190,205,220,.14), transparent 60%), linear-gradient(160deg,#0b0d0f 0%,#181c20 55%,#22262b 100%)}
+.scene-rain {background:radial-gradient(700px 300px at 25% 105%, rgba(110,150,190,.14), transparent 55%), linear-gradient(160deg,#090d12 0%,#101a22 55%,#17232d 100%)}
+.scene-studio{background:radial-gradient(500px 260px at 50% 92%, rgba(255,255,255,.12), transparent 60%), linear-gradient(180deg,#040404 0%,#0d0d0d 55%,#141414 100%)}
+.scene-canyon{background:radial-gradient(720px 300px at 65% 100%, rgba(226,160,90,.13), transparent 55%), linear-gradient(160deg,#0d110b 0%,#1a2113 55%,#252e1b 100%)}
+.scene-dusk {background:radial-gradient(760px 320px at 70% 105%, rgba(190,120,170,.12), transparent 55%), linear-gradient(160deg,#0e0b11 0%,#1f1626 55%,#2a1e31 100%)}
+.scene-snow {background:radial-gradient(720px 320px at 35% 95%, rgba(200,215,235,.16), transparent 55%), linear-gradient(160deg,#0e1013 0%,#1e2126 55%,#2a2d33 100%)}
+.thumb-car{
+  font-family:var(--font-d);font-weight:100;
+  font-size:clamp(34px,4.4vw,60px);letter-spacing:.3em;text-indent:.3em;
+  color:rgba(245,243,238,.10);
+  transition:color .4s;
+}
+.work-card:hover .thumb-car{color:rgba(245,243,238,.22)}
+.work-card .meta{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding:44px 20px 16px;
+  background:linear-gradient(180deg,transparent,rgba(8,8,10,.88));
+}
+.work-card .meta h3{font-family:var(--font-d);font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.work-card .meta .year{font-size:12px;font-weight:300;letter-spacing:.22em;color:var(--ink-faint)}
+
+/* ============ ABOUT ============ */
+.about{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(40px,6vw,100px);align-items:start}
+.about-copy p{color:var(--ink-dim);margin-bottom:24px;max-width:62ch;font-size:14px;line-height:2.05}
+.about-copy p strong{color:var(--ink);font-weight:400}
+.about-copy .drop{
+  font-family:var(--font-d);font-weight:700;font-size:clamp(56px,8vw,96px);
+  line-height:1;color:var(--accent);float:left;margin:4px 20px 0 0;
+}
+.cred-list{list-style:none;border-top:1px solid var(--line)}
+.cred-list li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  padding:19px 2px;border-bottom:1px solid var(--line);
+  font-size:13px;font-weight:300;
+}
+.cred-list .k{color:var(--ink);font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-size:12.5px}
+.cred-list .v{color:var(--ink-dim);text-align:right;font-size:14px}
+.cred-list .v.hl{color:var(--accent);font-family:var(--font-d);font-weight:300;letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+
+/* ============ CONTACT / FOOTER ============ */
+.contact h2{
+  font-family:var(--font-d);font-weight:600;text-transform:uppercase;
+  font-size:clamp(40px,7vw,96px);letter-spacing:.02em;line-height:1.02;
+  margin-bottom:clamp(36px,5vw,64px);max-width:14ch;
+}
+.contact h2 em{font-style:normal;color:var(--ink-faint)}
+.socials{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px}
+.socials a{
+  display:inline-block;padding:15px 32px;border:1px solid var(--line);
+  border-radius:var(--radius);font-family:var(--font-d);font-weight:500;
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  transition:all .22s;
+}
+.socials a:hover{border-color:var(--accent);color:var(--accent)}
+footer{
+  padding:30px var(--pad);border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  color:var(--ink-faint);font-size:12px;font-weight:300;letter-spacing:.14em;
+}
+
+/* ============ GEAR ============ */
+.gear-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gear-item{border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px 22px;background:rgba(245,243,238,.015);transition:border-color .25s}
+.gear-item:hover{border-color:rgba(232,150,60,.45)}
+.gear-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
+.gear-top h3{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:.05em;text-transform:uppercase}
+.gear-tag{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(232,150,60,.35);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.gear-item p{font-size:13.5px;font-weight:300;line-height:1.9;color:var(--ink-dim)}
+.gear-lens{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+.gear-lens li{font-size:13.5px;font-weight:300;color:var(--ink-dim);letter-spacing:.02em;border-bottom:1px solid rgba(245,243,238,.06);padding-bottom:5px}
+@media (max-width: 900px){.gear-grid{grid-template-columns:1fr}}
+
+/* ============ QUOTE FORM ============ */
+.quote-form-wrap{margin-top:clamp(40px,6vw,72px);max-width:760px}
+.quote-title{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px;color:var(--ink)}
+#quote-form{display:grid;gap:18px}
+.qf-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.qf-field{display:grid;gap:8px}
+.qf-field label{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)}
+.qf-field label .opt{color:var(--ink-faint);text-transform:none;letter-spacing:.05em}
+.qf-field input,.qf-field select,.qf-field textarea{
+  background:transparent;border:1px solid var(--line);border-radius:var(--radius);
+  color:var(--ink);font-family:var(--font-b);font-weight:300;font-size:14px;
+  padding:13px 14px;outline:none;transition:border-color .2s;width:100%;box-sizing:border-box;
+}
+.qf-field select{appearance:none;-webkit-appearance:none;cursor:pointer}
+.qf-field select option{background:var(--bg);color:var(--ink)}
+.qf-field input:focus,.qf-field select:focus,.qf-field textarea:focus{border-color:var(--accent)}
+.qf-field textarea{resize:vertical;min-height:110px}
+.qf-submit{margin-top:6px;justify-self:start}
+.qf-status{font-size:13px;min-height:20px;margin-top:4px}
+.qf-status.ok{color:var(--accent)}
+.qf-status.err{color:#b3541e}
+@media (max-width: 620px){.qf-row{grid-template-columns:1fr}}
+
+/* ============ REAL ESTATE (light theme zone) ============ */
+.re{padding:clamp(90px,12vw,180px) var(--pad)}
+.re .no{color:var(--accent)}
+.re-suites{display:grid;gap:clamp(56px,8vw,110px)}
+.re-suite-name{
+  font-family:var(--font-d);font-weight:500;font-size:15px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-dim);margin-bottom:22px;
+}
+.re-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px}
+.re-card{border-radius:var(--radius);overflow:hidden;background:rgba(28,26,22,.05);min-height:240px;position:relative}
+.re-card.tall{min-height:340px}
+.re-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.6,.2,1)}
+.re-card:hover img{transform:scale(1.04)}
+.re-note{margin-top:44px;font-size:12px;letter-spacing:.1em;color:var(--ink-faint)}
+@media (max-width: 900px){.re-grid{grid-template-columns:1fr 1fr}.re-card{min-height:220px}}
+@media (max-width: 620px){.re-grid{grid-template-columns:1fr}.re-card,.re-card.tall{min-height:200px}}
+
+/* ============ DRONE ============ */
+.drone-grid{display:grid;grid-template-columns:1fr;gap:clamp(14px,2.4vw,26px)}
+.drone-shot{border-radius:var(--radius);overflow:hidden;background:rgba(28,26,22,.05);aspect-ratio:21/9;position:relative}
+.drone-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.6,.2,1)}
+.drone-shot:hover img{transform:scale(1.02)}
+@media (max-width: 620px){.drone-shot{aspect-ratio:16/9}}
+
+/* ============ FILTERS ============ */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:-28px 0 40px}
+.filter-btn{
+  background:transparent;border:1px solid var(--line);border-radius:var(--radius);
+  color:var(--ink-dim);font-family:var(--font-d);font-weight:500;font-size:13px;
+  letter-spacing:.16em;text-transform:uppercase;padding:10px 22px;cursor:pointer;
+  transition:all .2s;
+}
+.filter-btn:hover{color:var(--ink);border-color:var(--ink)}
+.filter-btn.on{border-color:var(--accent);color:var(--accent)}
+
+/* ============ FILTERS ============ */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:-28px 0 40px}
+.filter-btn{
+  background:transparent;border:1px solid var(--line);border-radius:var(--radius);
+  color:var(--ink-dim);font-family:var(--font-d);font-weight:300;font-size:11px;
+  letter-spacing:.28em;text-transform:uppercase;padding:10px 22px;cursor:pointer;
+  transition:all .2s;
+}
+.filter-btn:hover{color:var(--ink);border-color:var(--ink)}
+.filter-btn.on{border-color:var(--accent);color:var(--accent)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px){
+  .work-grid{grid-template-columns:repeat(3,1fr)}
+  .work-card{grid-row:span 8}
+  .work-card.lg{grid-row:span 13}
+  .work-card.tall{grid-row:span 17}
+  .about-grid{grid-template-columns:1fr}
+}
+@media (max-width: 620px){
+  .work-grid{grid-template-columns:repeat(2,1fr)}
+  .work-card{grid-row:span 6}
+  .work-card.lg{grid-row:span 10}
+  .work-card.tall{grid-row:span 13}
+  .nav{
+    position:fixed;top:58px;left:0;right:0;z-index:49;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(11,11,13,.97);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    padding:8px 20px 18px;display:none;
+  }
+  .nav.open{display:flex}
+  .nav a{padding:14px 2px;border-bottom:1px solid var(--line);display:block;font-size:14px}
+  .nav .lang{margin:14px 0 0;justify-content:flex-start;display:flex}
+  .nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;
+    background:none;border:0;cursor:pointer;padding:10px 6px}
+  .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--ink);transition:all .25s}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .topbar{padding:16px 20px}
+  .hero{padding:0 20px 56px}
+  section{padding:72px 20px}
+  .contact h2{font-size:42px}
+}
+
+/* ============ MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <a class="brand" href="#top">YUQI<em>·</em>WORKS</a>
+  <nav class="nav">
+    <a href="#work" data-i18n="navWork">Work</a>
+    <a href="#re" data-i18n="navRe">Real Estate</a>
+    <a href="#drone" data-i18n="navDrone">Drone</a>
+    <a href="#gear" data-i18n="navGear">Gear</a>
+    <a href="#about" data-i18n="navAbout">About</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" aria-pressed="true">EN</button>
+      <button data-lang="zh" aria-pressed="false">中</button>
+    </div>
+  </nav>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-watermark">PHOTOGRAPHY</div>
+  <div class="hero-inner">
+    <p class="kicker" data-i18n="heroKicker">Automotive Photography · Vancouver BC</p>
+    <h1 data-i18n="heroTitle">Photography,<br><span>built for speed</span></h1>
+    <p class="hero-sub" data-i18n="heroSub">
+      Ten years behind the lens. Two Camaros in the garage.
+      Commercial drone pilot and <strong>Diamond Rally</strong> staff photographer —
+      chasing light, motion and metal across the Pacific Northwest.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="#work" data-i18n="ctaWork">View Work</a>
+      <a class="btn btn-ghost" href="#contact" data-i18n="ctaContact">Get in Touch</a>
+    </div>
+    <div class="hero-facts">
+      <div class="fact"><b data-i18n="f1v">10+</b><span data-i18n="f1k">Years Shooting</span></div>
+      <div class="fact"><b data-i18n="f2v">2</b><span data-i18n="f2k">Camaros</span></div>
+      <div class="fact"><b data-i18n="f3v">Diamond Rally</b><span data-i18n="f3k">Staff Photographer</span></div>
+      <div class="fact"><b data-i18n="f4v">Drone</b><span data-i18n="f4k">Commercial Pilot</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="work">
+  <div class="sect-head">
+    <div>
+      <span class="no" data-i18n="workNo">01 — Selected Work</span>
+      <h2 data-i18n="workTitle">Featured Shots</h2>
+    </div>
+    <p data-i18n="workDesc">A handful of frames from the archive. Full sets on Instagram — new work drops there first.</p>
+  </div>
+<div class="filters" role="group" aria-label="Filter">
+  <button class="filter-btn on" data-f="all" data-i18n="fAll">All</button>
+  <button class="filter-btn" data-f="car" data-i18n="fCar">Cars</button>
+  <button class="filter-btn" data-f="street" data-i18n="fStreet">Street</button>
+  <button class="filter-btn" data-f="event" data-i18n="fEvent">Events</button>
+</div>
+  <!--
+    HOW TO REPLACE PLACEHOLDERS (如何替换图片):
+    1. Put your photo in the photos/ folder next to this file.
+    2. Replace the <div class="thumb scene-xxx">...</div> block with:
+       <img class="thumb" src="photos/your-photo.jpg" alt="description">
+       (keep the class "thumb" so the layout keeps working)
+  -->
+  <div class="work-grid">
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/01.jpg" alt="Chevrolet Camaro ZL1" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p01t">Chevrolet Camaro ZL1</h3><span class="year" data-i18n="p01y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/03.jpg" alt="Ford Mustang GT500" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p03t">Ford Mustang GT500</h3><span class="year" data-i18n="p03y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/04.jpg" alt="Nissan GT-R" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p04t">Nissan GT-R</h3><span class="year" data-i18n="p04y"></span></figcaption>
+</figure>
+<figure class="work-card tall" data-cat="car">
+<div class="thumb"><img src="photos/web/05.jpg" alt="Ferrari 488 Pista" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p05t">Ferrari 488 Pista</h3><span class="year" data-i18n="p05y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/06.jpg" alt="Chevrolet Camaro RS" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p06t">Chevrolet Camaro RS</h3><span class="year" data-i18n="p06y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/13.jpg" alt="Lamborghini Aventador SV" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p13t">Lamborghini Aventador SV</h3><span class="year" data-i18n="p13y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/14.jpg" alt="Koenigsegg Jesko · Canada Debut" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p14t">Koenigsegg Jesko · Canada Debut</h3><span class="year" data-i18n="p14y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/15.jpg" alt="Koenigsegg Jesko · Canada Debut" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p15t">Koenigsegg Jesko · Canada Debut</h3><span class="year" data-i18n="p15y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/20.jpg" alt="Lamborghini Aventador SVJ" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p20t">Lamborghini Aventador SVJ</h3><span class="year" data-i18n="p20y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/23.jpg" alt="Lamborghini Aventador SVJ" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p23t">Lamborghini Aventador SVJ</h3><span class="year" data-i18n="p23y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/24.jpg" alt="McLaren 600LT" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p24t">McLaren 600LT</h3><span class="year" data-i18n="p24y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/30.jpg" alt="VW Golf R · Dealership" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p30t">VW Golf R · Dealership</h3><span class="year" data-i18n="p30y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/32.jpg" alt="VW Golf R" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p32t">VW Golf R</h3><span class="year" data-i18n="p32y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/33.jpg" alt="VW Golf R" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p33t">VW Golf R</h3><span class="year" data-i18n="p33y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/51.jpg" alt="Lamborghini Aventador SV" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p51t">Lamborghini Aventador SV</h3><span class="year" data-i18n="p51y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img src="photos/web/52.jpg" alt="Lamborghini Aventador SV" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p52t">Lamborghini Aventador SV</h3><span class="year" data-i18n="p52y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="event">
+<div class="thumb"><img src="photos/web/57.jpg" alt="Lamborghini Huracán Tecnica" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p57t">Lamborghini Huracán Tecnica</h3><span class="year" data-i18n="p57y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="event">
+<div class="thumb"><img src="photos/web/58.jpg" alt="Porsche 911 GT3 RS" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p58t">Porsche 911 GT3 RS</h3><span class="year" data-i18n="p58y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="event">
+<div class="thumb"><img src="photos/web/59.jpg" alt="Vancouver Autoshow 2026" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p59t">Vancouver Autoshow 2026</h3><span class="year" data-i18n="p59y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="event">
+<div class="thumb"><img src="photos/web/60.jpg" alt="Vancouver Autoshow 2026" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p60t">Vancouver Autoshow 2026</h3><span class="year" data-i18n="p60y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="event">
+<div class="thumb"><img src="photos/web/61.jpg" alt="Vancouver Autoshow 2026" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p61t">Vancouver Autoshow 2026</h3><span class="year" data-i18n="p61y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="event">
+<div class="thumb"><img src="photos/web/66.jpg" alt="Luxury Supercar Weekend 2018" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p66t">Luxury Supercar Weekend 2018</h3><span class="year" data-i18n="p66y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="event">
+<div class="thumb"><img src="photos/web/67.jpg" alt="Luxury Supercar Weekend 2018" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p67t">Luxury Supercar Weekend 2018</h3><span class="year" data-i18n="p67y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/68.jpg" alt="Audi R8" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p68t">Audi R8</h3><span class="year" data-i18n="p68y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="car">
+<div class="thumb"><img src="photos/web/69.jpg" alt="Audi R8" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p69t">Audi R8</h3><span class="year" data-i18n="p69y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="street">
+<div class="thumb"><img src="photos/web/70.jpg" alt="Raincity Vancouver" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p70t">Raincity Vancouver</h3><span class="year" data-i18n="p70y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="street">
+<div class="thumb"><img src="photos/web/71.jpg" alt="Raincity Vancouver" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p71t">Raincity Vancouver</h3><span class="year" data-i18n="p71y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="street">
+<div class="thumb"><img src="photos/web/72.jpg" alt="Raincity Vancouver" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p72t">Raincity Vancouver</h3><span class="year" data-i18n="p72y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="street">
+<div class="thumb"><img src="photos/web/73.jpg" alt="Night Vancouver" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p73t">Night Vancouver</h3><span class="year" data-i18n="p73y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="street">
+<div class="thumb"><img src="photos/web/74.jpg" alt="Raincity Vancouver" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p74t">Raincity Vancouver</h3><span class="year" data-i18n="p74y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="street">
+<div class="thumb"><img src="photos/web/75.jpg" alt="Lifestyle" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p75t">Lifestyle</h3><span class="year" data-i18n="p75y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="street">
+<div class="thumb"><img src="photos/web/76.jpg" alt="Night Vancouver" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p76t">Night Vancouver</h3><span class="year" data-i18n="p76y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="street">
+<div class="thumb"><img src="photos/web/77.jpg" alt="Coquitlam City" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p77t">Coquitlam City</h3><span class="year" data-i18n="p77y"></span></figcaption>
+</figure>
+<figure class="work-card" data-cat="street">
+<div class="thumb"><img src="photos/web/78.jpg" alt="Coquitlam City" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p78t">Coquitlam City</h3><span class="year" data-i18n="p78y"></span></figcaption>
+</figure>
+<figure class="work-card tall" data-cat="street">
+<div class="thumb"><img src="photos/web/79.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p79t">Life Chengdu</h3><span class="year" data-i18n="p79y"></span></figcaption>
+</figure>
+<figure class="work-card tall" data-cat="street">
+<div class="thumb"><img src="photos/web/80.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p80t">Life Chengdu</h3><span class="year" data-i18n="p80y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="street">
+<div class="thumb"><img src="photos/web/81.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p81t">Life Chengdu</h3><span class="year" data-i18n="p81y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="street">
+<div class="thumb"><img src="photos/web/82.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p82t">Life Chengdu</h3><span class="year" data-i18n="p82y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="street">
+<div class="thumb"><img src="photos/web/83.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p83t">Life Chengdu</h3><span class="year" data-i18n="p83y"></span></figcaption>
+</figure>
+<figure class="work-card tall" data-cat="street">
+<div class="thumb"><img src="photos/web/84.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p84t">Life Chengdu</h3><span class="year" data-i18n="p84y"></span></figcaption>
+</figure>
+<figure class="work-card lg" data-cat="street">
+<div class="thumb"><img src="photos/web/85.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p85t">Life Chengdu</h3><span class="year" data-i18n="p85y"></span></figcaption>
+</figure>
+<figure class="work-card tall" data-cat="street">
+<div class="thumb"><img src="photos/web/86.jpg" alt="Life Chengdu" loading="lazy"></div>
+<figcaption class="meta"><h3 data-i18n="p86t">Life Chengdu</h3><span class="year" data-i18n="p86y"></span></figcaption>
+</figure>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<!-- ============ DRONE ============ -->
+
+<!-- ============ REAL ESTATE ============ -->
+<section id="re" class="re">
+  <div class="sect-head">
+    <div>
+      <span class="no" data-i18n="reNo">05 — Real Estate</span>
+      <h2 data-i18n="reTitle">Homes &amp; Spaces</h2>
+    </div>
+    <p data-i18n="reDesc">Interior &amp; exterior photography for listings, developers and agents — bright, wide, built to sell.</p>
+  </div>
+  <div class="re-suites">
+<div class="re-suite">
+      <h3 class="re-suite-name">Private Residence</h3>
+      <div class="re-grid">
+        <div class="re-card tall"><img src="photos/web/re_01.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card tall"><img src="photos/web/re_02.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card tall"><img src="photos/web/re_03.jpg" alt="Private Residence" loading="lazy"></div>
+      </div>
+    </div>
+<div class="re-suite">
+      <h3 class="re-suite-name">Private Residence</h3>
+      <div class="re-grid">
+        <div class="re-card tall"><img src="photos/web/re_18.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card tall"><img src="photos/web/re_19.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card"><img src="photos/web/re_20.jpg" alt="Private Residence" loading="lazy"></div>
+      </div>
+    </div>
+<div class="re-suite">
+      <h3 class="re-suite-name">Private Residence</h3>
+      <div class="re-grid">
+        <div class="re-card tall"><img src="photos/web/re_27.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card tall"><img src="photos/web/re_28.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card tall"><img src="photos/web/re_29.jpg" alt="Private Residence" loading="lazy"></div>
+      </div>
+    </div>
+<div class="re-suite">
+      <h3 class="re-suite-name">Private Residence</h3>
+      <div class="re-grid">
+        <div class="re-card"><img src="photos/web/re_31.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card tall"><img src="photos/web/re_32.jpg" alt="Private Residence" loading="lazy"></div>
+        <div class="re-card"><img src="photos/web/re_33.jpg" alt="Private Residence" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+  <p class="re-note" data-i18n="reNote">Selecting final frames — full suites on request.</p>
+</section>
+
+<section class="about" id="drone">
+  <div class="sect-head">
+    <div>
+      <span class="no" data-i18n="droneNo">03 — Drone</span>
+      <h2 data-i18n="droneTitle">From Above</h2>
+    </div>
+    <p data-i18n="droneDesc">Commercial drone pilot — aerial stills from the archive.</p>
+  </div>
+  <div class="drone-grid">
+    <div class="drone-shot lg"><img src="photos/drone/d01.jpg" alt="Aerial still" loading="lazy"></div>
+    <div class="drone-shot"><img src="photos/drone/d02.jpg" alt="Aerial still" loading="lazy"></div>
+    <div class="drone-shot"><img src="photos/drone/d03.jpg" alt="Aerial still" loading="lazy"></div>
+    <div class="drone-shot"><img src="photos/drone/d04.jpg" alt="Aerial still" loading="lazy"></div>
+    <div class="drone-shot"><img src="photos/drone/d05.jpg" alt="Aerial still" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<!-- ============ GEAR ============ -->
+<section class="about" id="gear">
+  <div class="sect-head">
+    <div>
+      <span class="no" data-i18n="gearNo">04 — Gear</span>
+      <h2 data-i18n="gearTitle">Gear List</h2>
+    </div>
+    <p data-i18n="gearDesc">What I shoot with — bodies, glass and the machine above.</p>
+  </div>
+  <div class="gear-grid">
+    <div class="gear-item">
+      <div class="gear-top"><h3>Sony A7R III</h3><span class="gear-tag" data-i18n="gearTag1">Camera</span></div>
+      <p data-i18n="gearD1">42MP full-frame · stills workhorse for cars &amp; events</p>
+    </div>
+    <div class="gear-item">
+      <div class="gear-top"><h3 data-i18n="gearC1">Cinema Cameras</h3><span class="gear-tag" data-i18n="gearTag2">Cinema</span></div>
+      <ul class="gear-lens">
+        <li>Sony FX3</li>
+        <li>Sony FX6</li>
+        <li>Z-CAM E2-F6 · Full-Frame</li>
+      </ul>
+    </div>
+    <div class="gear-item">
+      <div class="gear-top"><h3>Sony G Master</h3><span class="gear-tag" data-i18n="gearTag3">Lenses</span></div>
+      <ul class="gear-lens">
+        <li>16-35mm f/2.8</li>
+        <li>24-70mm f/2.8</li>
+        <li>70-200mm f/2.8</li>
+        <li>50-150mm f/2.0</li>
+        <li>50mm f/1.2</li>
+        <li>85mm f/1.4</li>
+      </ul>
+    </div>
+    <div class="gear-item">
+      <div class="gear-top"><h3>DJI Inspire 2 · X7</h3><span class="gear-tag" data-i18n="gearTag4">Drone</span></div>
+      <ul class="gear-lens">
+        <li>Zenmuse X7</li>
+        <li>DL 16mm</li>
+        <li>DL 24mm</li>
+        <li>DL 35mm</li>
+        <li>DL 50mm</li>
+      </ul>
+    </div>
+    <div class="gear-item">
+      <div class="gear-top"><h3 data-i18n="gearA1">Rig &amp; Support</h3><span class="gear-tag" data-i18n="gearTag5">Accessories</span></div>
+      <ul class="gear-lens">
+        <li>Gimbal</li>
+        <li>Car Mount</li>
+        <li>Jib Arm</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="sect-head">
+    <div>
+      <span class="no" data-i18n="aboutNo">02 — About</span>
+      <h2 data-i18n="aboutTitle">The Person<br>Behind The Lens</h2>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-copy">
+      <p><span class="drop" data-i18n="aboutDrop">I</span><strong data-i18n="aboutL1">'ve been shooting cars in Vancouver for over a decade</strong><span data-i18n="aboutR1"> — from weekend meet-ups and canyon runs to the grid of the Diamond Rally, where I served as staff photographer. A commercial drone licence means I'm not just parked at ground level: the shot above the car matters as much as the one at bumper height.</span></p>
+      <p data-i18n="aboutP2">Shooting with Sony full-frame — A7R III stills, FX3/FX6 and Z-CAM E2-F6 for motion — from canyon runs to car shows, I chase the frame that makes metal feel alive: paint under light, motion frozen, the environment doing half the work.</p>
+      <p data-i18n="aboutP3">Based in Vancouver BC. Available for events, launches, track days, and portrait-style car features. If you like my work, feel free to share it — credit is always appreciated.</p>
+    </div>
+    <ul class="cred-list">
+      <li><span class="k" data-i18n="cred1k">Experience</span><span class="v" data-i18n="cred1v">10+ years</span></li>
+      <li><span class="k" data-i18n="cred2k">Specialty</span><span class="v" data-i18n="cred2v">Automotive · Drone · Event</span></li>
+      <li><span class="k" data-i18n="cred3k">Credential</span><span class="v hl" data-i18n="cred3v">Commercial Drone Pilot</span></li>
+      <li><span class="k" data-i18n="cred4k">Gig Highlight</span><span class="v hl" data-i18n="cred4v">Diamond Rally Crew</span></li>
+      <li><span class="k" data-i18n="cred5k">Ride</span><span class="v" data-i18n="cred5v">Camaro ZL1 · Widebody RS</span></li>
+      <li><span class="k" data-i18n="cred6k">Base</span><span class="v" data-i18n="cred6v">Vancouver, BC</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 data-i18n="contactTitle">Let's shoot<br><em>your car.</em></h2>
+  <div class="socials">
+    <a href="https://www.instagram.com/yuqiwang_w/" target="_blank" rel="noopener">Instagram — @yuqiwang_w</a>
+    <a href="mailto:yuqiworks@gmail.com" data-i18n="mailCta">yuqiworks@gmail.com</a>
+  </div>
+
+  <div class="quote-form-wrap">
+    <h3 class="quote-title" data-i18n="quoteTitle">Request a Quote</h3>
+    <form id="quote-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="WEB3FORMS_KEY_PLACEHOLDER">
+      <input type="hidden" name="subject" value="New Quote Request — YUQI WORKS">
+      <input type="hidden" name="from_name" value="YUQI WORKS Website">
+      <div class="qf-row">
+        <div class="qf-field">
+          <label for="qf-name" data-i18n="quoteName">Name</label>
+          <input id="qf-name" name="name" type="text" required placeholder="Your name">
+        </div>
+        <div class="qf-field">
+          <label for="qf-email" data-i18n="quoteEmail">Email</label>
+          <input id="qf-email" name="email" type="email" required placeholder="you@email.com">
+        </div>
+      </div>
+      <div class="qf-row">
+        <div class="qf-field">
+          <label for="qf-type" data-i18n="quoteType">Project Type</label>
+          <select id="qf-type" name="project_type">
+            <option value="Automotive">Automotive</option>
+            <option value="Real Estate">Real Estate</option>
+            <option value="Drone / Aerial">Drone / Aerial</option>
+            <option value="Event">Event</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="qf-field">
+          <label for="qf-date" data-i18n="quoteDate">Preferred Date <span class="opt">(optional)</span></label>
+          <input id="qf-date" name="date" type="date">
+        </div>
+      </div>
+      <div class="qf-field">
+        <label for="qf-msg" data-i18n="quoteMsg">Project Details</label>
+        <textarea id="qf-msg" name="message" rows="4" placeholder="Tell me about your shoot…" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-solid qf-submit" data-i18n="quoteSend">Send Request</button>
+      <p class="qf-status" id="qf-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 YUQI WORKS · Vancouver BC</span>
+  <span data-i18n="footNote">Shot on location across the Pacific Northwest</span>
+</footer>
+
+<script>
+/* ============ i18n ============ */
+const I18N = {
+  en: {
+    navWork:"Work", navRe:"Real Estate", navDrone:"Drone", navGear:"Gear", navAbout:"About", navContact:"Contact", fAll:"All", fCar:"Cars", fStreet:"Street", fEvent:"Events",
+    reNo:"05 — Real Estate", reTitle:"Homes & Spaces", reDesc:"Interior & exterior photography for listings, developers and agents — bright, wide, built to sell.", reNote:"Selecting final frames — full suites on request.",
+    droneNo:"03 — Drone", droneTitle:"From Above", droneDesc:"Commercial drone pilot — aerial stills from the archive.", droneV1t:"Pandapix Drone Reel",
+    gearNo:"04 — Gear", gearTitle:"Gear List", gearDesc:"What I shoot with — bodies, glass and the machine above.", gearTag1:"Camera", gearTag2:"Cinema", gearC1:"Cinema Cameras", gearTag3:"Lenses", gearTag4:"Drone", gearTag5:"Accessories", gearA1:"Rig & Support", gearD1:"42MP full-frame · stills workhorse for cars & events", gearD2:"Full-frame cinema cameras · video & aerial work", fAll:"All", fCar:"Cars", fStreet:"Street", fEvent:"Events",
+    heroKicker:"Automotive Photography · Vancouver BC",
+    heroTitle:"Photography,<br><span>built for speed</span>",
+    heroSub:"Ten years behind the lens. Commercial drone pilot and <strong>Diamond Rally</strong> staff photographer — chasing light, motion and metal across the Pacific Northwest.",
+    ctaWork:"View Work", ctaContact:"Get in Touch",
+    f1v:"10+", f1k:"Years Shooting", f2v:"Sony", f2k:"A7R III · FX3 · Z-CAM",
+    f3v:"Diamond Rally", f3k:"Staff Photographer", f4v:"Drone", f4k:"Commercial Pilot",
+    workNo:"01 — Selected Work", workTitle:"Featured Shots",
+    workDesc:"A handful of frames from the archive. Full sets on Instagram — new work drops there first.",
+    w1t:"Night Run · Downtown", w2t:"Golden Hour · Sea to Sky", w3t:"Tunnel Run · Light Trails",
+    w4t:"Rain City · Reflections", w5t:"Studio · Carbon Detail", w6t:"Canyon Carving · Okanagan",
+    w7t:"Dusk Drift · Event Night", w8t:"Winter Shine · Cypress", w9t:"Diamond Rally · The Grid",
+    w10t:"Midnight · Light Trails", w11t:"Street · Reflections", w12t:"Golden Hour · Backroads",
+    p01t:"Chevrolet Camaro ZL1", p01y:"",
+    p03t:"Ford Mustang GT500", p03y:"",
+    p04t:"Nissan GT-R", p04y:"",
+    p05t:"Ferrari 488 Pista", p05y:"",
+    p06t:"Chevrolet Camaro RS", p06y:"",
+    p13t:"Lamborghini Aventador SV", p13y:"",
+    p14t:"Koenigsegg Jesko · Canada Debut", p14y:"",
+    p15t:"Koenigsegg Jesko · Canada Debut", p15y:"",
+    p20t:"Lamborghini Aventador SVJ", p20y:"",
+    p23t:"Lamborghini Aventador SVJ", p23y:"",
+    p24t:"McLaren 600LT", p24y:"",
+    p30t:"VW Golf R · Dealership", p30y:"",
+    p32t:"VW Golf R", p32y:"",
+    p33t:"VW Golf R", p33y:"",
+    p51t:"Lamborghini Aventador SV", p51y:"",
+    p52t:"Lamborghini Aventador SV", p52y:"",
+    p57t:"Lamborghini Huracán Tecnica", p57y:"",
+    p58t:"Porsche 911 GT3 RS", p58y:"",
+    p59t:"Vancouver Autoshow 2026", p59y:"",
+    p60t:"Vancouver Autoshow 2026", p60y:"",
+    p61t:"Vancouver Autoshow 2026", p61y:"",
+    p66t:"Luxury Supercar Weekend 2018", p66y:"",
+    p67t:"Luxury Supercar Weekend 2018", p67y:"",
+    p68t:"Audi R8", p68y:"",
+    p69t:"Audi R8", p69y:"",
+    p70t:"Raincity Vancouver", p70y:"",
+    p71t:"Raincity Vancouver", p71y:"",
+    p72t:"Raincity Vancouver", p72y:"",
+    p73t:"Night Vancouver", p73y:"",
+    p74t:"Raincity Vancouver", p74y:"",
+    p75t:"Lifestyle", p75y:"",
+    p76t:"Night Vancouver", p76y:"",
+    p77t:"Coquitlam City", p77y:"",
+    p78t:"Coquitlam City", p78y:"",
+    p79t:"Life Chengdu", p79y:"",
+    p80t:"Life Chengdu", p80y:"",
+    p81t:"Life Chengdu", p81y:"",
+    p82t:"Life Chengdu", p82y:"",
+    p83t:"Life Chengdu", p83y:"",
+    p84t:"Life Chengdu", p84y:"",
+    p85t:"Life Chengdu", p85y:"",
+    p86t:"Life Chengdu", p86y:"",
+
+    aboutNo:"02 — About", aboutTitle:"The Person<br>Behind The Lens",
+    aboutDrop:"I", aboutL1:"'ve been shooting cars in Vancouver for over a decade",
+    aboutR1:" — from weekend meet-ups and canyon runs to the grid of the Diamond Rally, where I served as staff photographer. A commercial drone licence means I'm not just parked at ground level: the shot above the car matters as much as the one at bumper height.",
+    aboutP2:"Shooting with Sony full-frame — A7R III stills, FX3/FX6 and Z-CAM E2-F6 for motion — from canyon runs to car shows, I chase the frame that makes metal feel alive: paint under light, motion frozen, the environment doing half the work.",
+    aboutP3:"Based in Vancouver BC. Available for events, launches, track days, and portrait-style car features. If you like my work, feel free to share it — credit is always appreciated.",
+    cred1k:"Experience", cred1v:"10+ years", cred2k:"Specialty", cred2v:"Automotive · Drone · Event",
+    cred3k:"Credential", cred3v:"Commercial Drone Pilot", cred4k:"Gig Highlight", cred4v:"Diamond Rally Crew",
+    cred5k:"Gear", cred5v:"Sony A7R III · Z-CAM E2-F6", cred6k:"Base", cred6v:"Vancouver, BC",
+    contactTitle:"Let's shoot<br><em>your car.</em>",
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"Request a Quote", quoteName:"Name", quoteEmail:"Email", quoteType:"Project Type", quoteDate:"Preferred Date", quoteMsg:"Project Details", quoteSend:"Send Request", footNote:"Shot on location across the Pacific Northwest"
+  },
+  zh: {
+    navWork:"作品", navRe:"房产", navDrone:"航拍", navGear:"器材", navAbout:"关于", navContact:"联系", fAll:"全部", fCar:"汽车", fStreet:"街头", fEvent:"活动",
+    reNo:"05 — 房产", reTitle:"住宅与空间", reDesc:"为房源、开发商与经纪公司拍摄的内外景——明亮、开阔、为成交而生。", reNote:"最终成片筛选中——完整套系可索取。",
+    droneNo:"03 — 航拍", droneTitle:"俯瞰视角", droneDesc:"商业无人机执照飞手 — 档案航拍画面。", droneV1t:"Pandapix 无人机卷",
+    gearNo:"04 — 器材", gearTitle:"器材清单", gearDesc:"我使用的拍摄设备——机身、镜头与天空之上的机器。", gearTag1:"相机", gearTag2:"视频机", gearC1:"电影机", gearTag3:"镜头", gearTag4:"无人机", gearTag5:"配件", gearA1:"辅助设备", gearD1:"4200 万像素全画幅 · 照片主力（汽车与活动）", gearD2:"全画幅电影机 · 视频与航拍", fAll:"全部", fCar:"汽车", fStreet:"街头", fEvent:"活动",
+    heroKicker:"汽车摄影 · 温哥华 BC",
+    heroTitle:"为速度<br><span>而生</span>",
+    heroSub:"十年镜头生涯，持商业无人机执照，曾任 <strong>Diamond Rally</strong> 特聘摄影师——在太平洋西北海岸追逐光影、动感与金属质感。",
+    ctaWork:"看作品", ctaContact:"联系我",
+    f1v:"10+", f1k:"年拍摄经验", f2v:"Sony", f2k:"A7R III · FX3 · Z-CAM",
+    f3v:"Diamond Rally", f3k:"特聘摄影师", f4v:"无人机", f4k:"商业执照飞手",
+    workNo:"01 — 精选作品", workTitle:"代表作品",
+    workDesc:"档案中的精选画面。完整作品集在 Instagram——新作第一时间发布在那里。",
+    w1t:"夜跑 · 市中心", w2t:"金色时刻 · Sea to Sky", w3t:"隧道 · 光轨",
+    w4t:"雨城 · 倒影", w5t:"影棚 · 碳纤细节", w6t:"山谷 · Okanagan",
+    w7t:"黄昏 · 活动夜", w8t:"冬雪 · Cypress", w9t:"Diamond Rally · 发车区",
+    w10t:"午夜 · 光轨", w11t:"街头 · 倒影", w12t:"金色时刻 · 乡间道",
+    p01t:"雪佛兰 Camaro ZL1", p01y:"",
+    p03t:"福特 Mustang GT500", p03y:"",
+    p04t:"日产 GT-R", p04y:"",
+    p05t:"法拉利 488 Pista", p05y:"",
+    p06t:"雪佛兰 Camaro RS", p06y:"",
+    p13t:"兰博基尼 Aventador SV", p13y:"",
+    p14t:"科尼赛克 Jesko · 加拿大首发", p14y:"",
+    p15t:"科尼赛克 Jesko · 加拿大首发", p15y:"",
+    p20t:"兰博基尼 Aventador SVJ", p20y:"",
+    p23t:"兰博基尼 Aventador SVJ", p23y:"",
+    p24t:"迈凯轮 600LT", p24y:"",
+    p30t:"大众 Golf R · 车行", p30y:"",
+    p32t:"大众 Golf R", p32y:"",
+    p33t:"大众 Golf R", p33y:"",
+    p51t:"兰博基尼 Aventador SV", p51y:"",
+    p52t:"兰博基尼 Aventador SV", p52y:"",
+    p57t:"兰博基尼 Huracán Tecnica", p57y:"",
+    p58t:"保时捷 911 GT3 RS", p58y:"",
+    p59t:"2026 温哥华车展", p59y:"",
+    p60t:"2026 温哥华车展", p60y:"",
+    p61t:"2026 温哥华车展", p61y:"",
+    p66t:"2018 豪华超跑周末", p66y:"",
+    p67t:"2018 豪华超跑周末", p67y:"",
+    p68t:"奥迪 R8", p68y:"",
+    p69t:"奥迪 R8", p69y:"",
+    p70t:"雨城温哥华", p70y:"",
+    p71t:"雨城温哥华", p71y:"",
+    p72t:"雨城温哥华", p72y:"",
+    p73t:"温哥华之夜", p73y:"",
+    p74t:"雨城温哥华", p74y:"",
+    p75t:"生活方式", p75y:"",
+    p76t:"温哥华之夜", p76y:"",
+    p77t:"高贵林市", p77y:"",
+    p78t:"高贵林市", p78y:"",
+    p79t:"成都生活", p79y:"",
+    p80t:"成都生活", p80y:"",
+    p81t:"成都生活", p81y:"",
+    p82t:"成都生活", p82y:"",
+    p83t:"成都生活", p83y:"",
+    p84t:"成都生活", p84y:"",
+    p85t:"成都生活", p85y:"",
+    p86t:"成都生活", p86y:"",
+
+    aboutNo:"02 — 关于", aboutTitle:"镜头<br>背后的人",
+    aboutDrop:"我", aboutL1:"在温哥华拍车已经超过十年",
+    aboutR1:"——从周末车聚和山路跑，到 Diamond Rally 超跑拉力的发车区（我曾担任其特聘摄影师）。持有商业无人机执照，所以我不只站在地面：车顶之上的视角，和保险杠高度的视角同样重要。",
+    aboutP2:"手持索尼全画幅系统——A7R III 拍摄静态，FX3/FX6 与 Z-CAM E2-F6 负责动态——从山路跑到车展，我追逐的是让金属活起来的画面：光影下的漆面、凝固的动感、与场景融为一体的环境叙事。",
+    aboutP3:"常驻温哥华 BC。承接活动、新车发布、赛道日和汽车写真风格拍摄。喜欢我的作品欢迎转发——注明出处即可。",
+    cred1k:"经验", cred1v:"10年以上", cred2k:"专长", cred2v:"汽车 · 航拍 · 活动",
+    cred3k:"资质", cred3v:"商业无人机执照", cred4k:"高光履历", cred4v:"Diamond Rally 团队",
+    cred5k:"器材", cred5v:"索尼 A7R III · Z-CAM E2-F6", cred6k:"常驻", cred6v:"温哥华 BC",
+    contactTitle:"来拍<br><em>你的车。</em>",
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"获取报价", quoteName:"姓名", quoteEmail:"邮箱", quoteType:"项目类型", quoteDate:"期望日期", quoteMsg:"项目详情", quoteSend:"发送请求", footNote:"拍摄地：太平洋西北海岸各处"
+  }
+};
+function applyLang(lang){
+  const dict = I18N[lang] || I18N.en;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('.lang button').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.lang === lang));
+  try{ localStorage.setItem('yuqi-lang', lang); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b => {
+  b.addEventListener('click', () => applyLang(b.dataset.lang));
+});
+applyLang((function(){ try{ return localStorage.getItem('yuqi-lang') || 'en'; }catch(e){ return 'en'; } })());
+
+/* ============ FILTER ============ */
+document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('on', x === b));
+  const f = b.dataset.f;
+  document.querySelectorAll('.work-card').forEach(c => {
+    c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+  });
+}));
+
+
+/* ============ FILTER ============ */
+document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('on', x === b));
+  const f = b.dataset.f;
+  document.querySelectorAll('.work-card').forEach(c => {
+    c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+  });
+}));
+
+
+/* ============ DARK -> LIGHT SCROLL GRADIENT ============ */
+(function(){
+  const reSec = document.getElementById('re');
+  if (!reSec) return;
+  const vars = ['bg','bg-2','ink','ink-dim','ink-faint','line','accent'];
+  // line uses rgba alpha — lerp the rgb part only
+  function lerp(a, b, t){ return Math.round(a + (b - a) * t); }
+  function clamp01(x){ return Math.min(1, Math.max(0, x)); }
+  function apply(t){
+    const s = document.documentElement.style;
+    s.setProperty('--bg', `rgb(${lerp(11, 244, t)}, ${lerp(11, 241, t)}, ${lerp(13, 234, t)})`);
+    s.setProperty('--bg-2', `rgb(${lerp(16, 236, t)}, ${lerp(16, 232, t)}, ${lerp(19, 222, t)})`);
+    s.setProperty('--ink', `rgb(${lerp(245, 28, t)}, ${lerp(243, 26, t)}, ${lerp(238, 22, t)})`);
+    s.setProperty('--ink-dim', `rgb(${lerp(143, 107, t)}, ${lerp(140, 101, t)}, ${lerp(132, 88, t)})`);
+    s.setProperty('--ink-faint', `rgb(${lerp(92, 154, t)}, ${lerp(90, 146, t)}, ${lerp(84, 130, t)})`);
+    s.setProperty('--line', `rgba(${lerp(245, 28, t)}, ${lerp(243, 26, t)}, ${lerp(238, 22, t)}, ${0.10 + 0.04 * t})`);
+    s.setProperty('--accent', `rgb(${lerp(232, 168, t)}, ${lerp(150, 116, t)}, ${lerp(60, 42, t)})`);
+  }
+  let ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const rect = reSec.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // start when section top enters viewport bottom, done when it reaches 35% up
+      const t = clamp01(1 - (rect.top - vh * 0.35) / (vh * 1.2));
+      apply(t);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+
+/* ============ MOBILE NAV TOGGLE ============ */
+(function(){
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
+
+/* ============ QUOTE FORM ============ */
+(function(){
+  const form = document.getElementById('quote-form');
+  const status = document.getElementById('qf-status');
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const key = form.querySelector('input[name="access_key"]').value;
+    if (!key || key.includes('PLACEHOLDER')) {
+      status.textContent = 'Form not configured yet — email us directly instead.';
+      status.className = 'qf-status err';
+      return;
+    }
+    const data = Object.fromEntries(new FormData(form).entries());
+    status.textContent = 'Sending…';
+    status.className = 'qf-status';
+    try {
+      const r = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      const j = await r.json();
+      if (j.success) {
+        status.textContent = 'Thank you — your request has been sent. I\'ll get back to you shortly.';
+        status.className = 'qf-status ok';
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong — please email me directly at yuqiworks@gmail.com';
+        status.className = 'qf-status err';
+      }
+    } catch (err) {
+      status.textContent = 'Network error — please email me directly at yuqiworks@gmail.com';
+      status.className = 'qf-status err';
+    }
+  });
+})();
+
+</script>
+</body>
+</html>
