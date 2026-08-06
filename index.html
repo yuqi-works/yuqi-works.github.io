@@ -316,8 +316,7 @@ footer{
 /* ============ DRONE ============ */
 .drone-grid{display:grid;grid-template-columns:1fr;gap:clamp(14px,2.4vw,26px)}
 .drone-shot{border-radius:var(--radius);overflow:hidden;background:rgba(28,26,22,.05);aspect-ratio:21/9;position:relative;cursor:pointer}
-.drone-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.6,.2,1)}
-.drone-shot:hover img{transform:scale(1.02)}
+.drone-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .drone-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s;pointer-events:none}
 .drone-shot:hover .drone-vid{opacity:1}
 @media (hover: none){.drone-vid{display:none}}
