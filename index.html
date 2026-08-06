@@ -407,6 +407,19 @@ footer{
   text-transform:uppercase;color:var(--ink-faint)}
 @media (max-width: 620px){.lb-nav{font-size:32px;padding:12px}}
 
+
+/* ============ FLOAT NAV ============ */
+.float-nav{position:fixed;right:22px;bottom:22px;display:flex;flex-direction:column;gap:10px;z-index:90}
+.float-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  background:var(--bg);color:var(--ink);font-size:17px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .3s, border-color .2s, transform .2s, background-color .3s;
+  box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.float-btn:hover{border-color:var(--accent);transform:translateY(-2px)}
+.float-nav.show .float-btn{opacity:1;pointer-events:auto;transform:translateY(0)}
+@media (max-width: 620px){.float-nav{right:14px;bottom:14px}.float-btn{width:42px;height:42px}}
+
 </style>
 </head>
 <body>
@@ -860,6 +873,13 @@ footer{
   <div class="lb-caption" id="lb-caption"></div>
 </div>
 
+
+<!-- ============ FLOAT NAV ============ -->
+<div class="float-nav" id="float-nav">
+  <button class="float-btn" id="f-top" aria-label="Back to top" title="Back to top">&#8593;</button>
+  <button class="float-btn" id="f-contact" aria-label="Contact" title="Contact">&#9993;</button>
+</div>
+
 <script>
 /* ============ i18n ============ */
 const I18N = {
@@ -1207,6 +1227,25 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
     if (!v) return;
     shot.addEventListener('mouseenter', () => { v.play().catch(() => {}); });
     shot.addEventListener('mouseleave', () => { v.pause(); });
+  });
+})();
+
+
+/* ============ FLOAT NAV ============ */
+(function(){
+  const nav = document.getElementById('float-nav');
+  const topBtn = document.getElementById('f-top');
+  const contactBtn = document.getElementById('f-contact');
+  if (!nav) return;
+  const onScroll = () => {
+    nav.classList.toggle('show', window.scrollY > 500);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if (topBtn) topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if (contactBtn) contactBtn.addEventListener('click', () => {
+    const el = document.getElementById('contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   });
 })();
 
