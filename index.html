@@ -26,7 +26,7 @@
   --ink-dim-l: #6b6558;
   --ink-faint-l:#9a9282;
   --line-l:    rgba(28,26,22,.14);
-  --accent-l:  #a8742a;
+  --accent-l:  #c8863a;
   --radius:  1px;
   --font-d:  'Archivo', 'Inter', system-ui, sans-serif;
   --font-b:  'Inter', system-ui, sans-serif;
@@ -54,7 +54,7 @@ img{display:block;max-width:100%}
   position:sticky;top:0;z-index:50;
   display:flex;align-items:center;justify-content:space-between;
   padding:22px var(--pad);
-  background:rgba(11,11,13,.86);
+  background:var(--bg);
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);
 }
@@ -80,7 +80,7 @@ img{display:block;max-width:100%}
   color:var(--ink-dim);font-family:var(--font-b);font-weight:300;font-size:13px;
   padding:8px 14px;letter-spacing:.16em;transition:all .2s;
 }
-.lang button[aria-pressed="true"]{color:var(--ink);background:rgba(245,243,238,.08)}
+.lang button[aria-pressed="true"]{color:var(--ink);background:var(--line)}
 
 /* ============ HERO ============ */
 .hero{
@@ -360,7 +360,7 @@ footer{
   .nav{
     position:fixed;top:58px;left:0;right:0;z-index:49;
     flex-direction:column;align-items:stretch;gap:0;
-    background:rgba(11,11,13,.97);backdrop-filter:blur(12px);
+    background:var(--bg);backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);
     padding:8px 20px 18px;display:none;
   }
@@ -1077,7 +1077,7 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
     s.setProperty('--ink-dim', `rgb(${lerp(143, 107, t)}, ${lerp(140, 101, t)}, ${lerp(132, 88, t)})`);
     s.setProperty('--ink-faint', `rgb(${lerp(92, 154, t)}, ${lerp(90, 146, t)}, ${lerp(84, 130, t)})`);
     s.setProperty('--line', `rgba(${lerp(245, 28, t)}, ${lerp(243, 26, t)}, ${lerp(238, 22, t)}, ${0.10 + 0.04 * t})`);
-    s.setProperty('--accent', `rgb(${lerp(232, 168, t)}, ${lerp(150, 116, t)}, ${lerp(60, 42, t)})`);
+    s.setProperty('--accent', `rgb(${lerp(232, 200, t)}, ${lerp(150, 134, t)}, ${lerp(60, 58, t)})`);
   }
   let ticking = false;
   function onScroll(){
