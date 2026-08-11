@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
+Disallow: /inspect/
+Disallow: /promo/
+Disallow: /select/
+Disallow: /select_auto/
+Disallow: /select_re/
+Disallow: /select_street/
+Disallow: /select_super/
+Disallow: /shots/
+Disallow: /shots_hd/
+Disallow: /shots_m/
+Disallow: /video/
+Disallow: /select.html
+Disallow: /models.html
+Disallow: /models_re.html
+Disallow: /models_street.html
+Disallow: /index-v1-bold.html
 
 Sitemap: https://yuqi.works/sitemap.xml
