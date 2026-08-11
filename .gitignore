@@ -18,6 +18,8 @@ exif_dump.json
 picks.json
 re_picks.json
 *.py
+!scripts/
+!scripts/*.py
 *.cjs
 *.sh
 check.js
