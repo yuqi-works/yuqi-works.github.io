@@ -1152,10 +1152,16 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const rect = reSec.getBoundingClientRect();
       const vh = window.innerHeight;
-      // start when section top enters viewport bottom, done when it reaches 35% up
-      const t = clamp01(1 - (rect.top - vh * 0.35) / (vh * 1.2));
+      // The automotive rate band stays fully dark until it has scrolled away —
+      // its last block is the "A different brief? Talk directly with Yuqi" CTA —
+      // so the transition is driven by that band's bottom edge instead of the
+      // real-estate section's top (which used to whiten mid-band).
+      const band = document.getElementById('quote-auto');
+      const anchor = band ? band.getBoundingClientRect().bottom : reSec.getBoundingClientRect().top;
+      const start = 0;           // only once the band is completely off screen
+      const end = -vh * 0.5;     // fully light half a screen further down
+      const t = clamp01((start - anchor) / (start - end));
       apply(t);
       ticking = false;
     });
