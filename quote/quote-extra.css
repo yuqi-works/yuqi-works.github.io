@@ -14,3 +14,15 @@ button.photo-choice { font:inherit; font-family:Archivo,sans-serif; color:inheri
 .email-button { text-decoration:none; }
 .lang-switch { text-decoration:none; }
 .shoot-card, .size-choice, .photo-choice, .video-option, .extra-option { user-select:none; }
+
+/* --- layout repair: these containers lost their display because the compiled
+   quote.css only carries grid-template-columns (the source globals.css relied on
+   a utility class). Without this the photo chips collapse to ~19px and the
+   package cards stack full width. --- */
+.shoot-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.size-choices { display:grid; grid-template-columns:1fr; gap:7px; }
+.property-size-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.photo-choices { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:7px; max-width:436px; }
+.video-list,.extra-list { display:flex; flex-direction:column; gap:8px; }
+@media (max-width:1040px) { .shoot-grid { grid-template-columns:1fr; } }
+@media (max-width:560px) { .shoot-grid,.property-size-grid { grid-template-columns:1fr; } .photo-choices { max-width:340px; } }
