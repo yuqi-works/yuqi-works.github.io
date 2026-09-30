@@ -1,0 +1,16 @@
+/* Gaps the framework CSS expected its UI components to provide (radio/checkbox base + native button resets). */
+.video-radio { border:1px solid #918c85; border-radius:50%; background:transparent; }
+.video-option.selected .video-radio { border:5px solid #e8963c; }
+.extra-option [role="checkbox"] { display:inline-flex; align-items:center; justify-content:center; flex:none; border:1px solid #918c85; background:transparent; color:#141416; }
+.extra-option.selected [role="checkbox"] { background:#e8963c; border-color:#e8963c; }
+.theme-property .video-radio { border-color:#8b8578; }
+.theme-property .extra-option [role="checkbox"] { border-color:#8b8578; }
+.theme-property .video-option.selected .video-radio { border-color:#c8863a; }
+.theme-property .extra-option.selected [role="checkbox"] { background:#c8863a; border-color:#c8863a; color:#fff; }
+button.photo-choice { font:inherit; font-family:Archivo,sans-serif; color:inherit; padding:0; }
+.stepper-btn { display:inline-flex; align-items:center; justify-content:center; background:transparent; border:0; cursor:pointer; }
+.stepper-btn:disabled { opacity:.35; cursor:not-allowed; }
+.copy-button { cursor:pointer; font-family:inherit; }
+.email-button { text-decoration:none; }
+.lang-switch { text-decoration:none; }
+.shoot-card, .size-choice, .photo-choice, .video-option, .extra-option { user-select:none; }
