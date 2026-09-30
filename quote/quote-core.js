@@ -120,11 +120,11 @@
       property: "Choose a property size, photo count and the media your listing needs. See an estimate instantly."
     },
     sections: {
-      brief: ["01 / THE BRIEF", "What are we shooting?"],
-      briefProperty: ["01 / THE PROPERTY", "How large is the space?"],
-      scope: ["02 / SCOPE", "Shape the deliverables."],
-      motion: ["03 / MOTION", "Add a moving image."],
-      extras: ["04 / FINISHING TOUCHES", "Make it yours."]
+      brief: ["01 · THE BRIEF", "What are we shooting?"],
+      briefProperty: ["01 · THE PROPERTY", "How large is the space?"],
+      scope: ["02 · SCOPE", "Shape the deliverables."],
+      motion: ["03 · MOTION", "Add a moving image."],
+      extras: ["04 · FINISHING TOUCHES", "Make it yours."]
     },
     shoots: [
       { value: "listing", tag: "LISTING", title: "Sale / listing", description: "15 clear photos \xB7 60 minutes \xB7 2\u20133 days.", starting: "$275" },
@@ -230,11 +230,11 @@
       property: "\u9009\u62E9\u623F\u5C4B\u9762\u79EF\u3001\u7167\u7247\u6570\u91CF\uFF0C\u4EE5\u53CA\u623F\u6E90\u9700\u8981\u7684\u89C6\u9891\u3002\u7ACB\u523B\u770B\u5230\u62A5\u4EF7\u3002"
     },
     sections: {
-      brief: ["01 / \u62CD\u6444\u9700\u6C42", "\u62CD\u4EC0\u4E48\uFF1F"],
-      briefProperty: ["01 / \u623F\u5C4B", "\u7A7A\u95F4\u6709\u591A\u5927\uFF1F"],
-      scope: ["02 / \u62CD\u6444\u8303\u56F4", "\u786E\u5B9A\u4EA4\u4ED8\u5185\u5BB9\u3002"],
-      motion: ["03 / \u52A8\u6001\u5F71\u50CF", "\u52A0\u4E00\u6BB5\u89C6\u9891\u3002"],
-      extras: ["04 / \u9644\u52A0\u9879", "\u8865\u5145\u7EC6\u8282\u3002"]
+      brief: ["01 · \u62CD\u6444\u9700\u6C42", "\u62CD\u4EC0\u4E48\uFF1F"],
+      briefProperty: ["01 · \u623F\u5C4B", "\u7A7A\u95F4\u6709\u591A\u5927\uFF1F"],
+      scope: ["02 · \u62CD\u6444\u8303\u56F4", "\u786E\u5B9A\u4EA4\u4ED8\u5185\u5BB9\u3002"],
+      motion: ["03 · \u52A8\u6001\u5F71\u50CF", "\u52A0\u4E00\u6BB5\u89C6\u9891\u3002"],
+      extras: ["04 · \u9644\u52A0\u9879", "\u8865\u5145\u7EC6\u8282\u3002"]
     },
     shoots: [
       { value: "listing", tag: "\u6302\u724C", title: "\u51FA\u552E / \u6302\u724C", description: "15 \u5F20\u6E05\u6670\u7167\u7247 \xB7 60 \u5206\u949F \xB7 2\u20133 \u5929\u4EA4\u4ED8", starting: "$275" },

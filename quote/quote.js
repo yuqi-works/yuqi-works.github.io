@@ -70,7 +70,7 @@
     function shootCards() {
       return t.shoots.map((option, index) => `
       <label class="${cls("shoot-card", input.shootType === option.value && "selected")}" data-shoot="${option.value}" role="radio" aria-checked="${input.shootType === option.value}">
-        <span class="shoot-top"><span>0${index + 1} / ${esc(option.tag)}</span><span class="radio-indicator" aria-hidden="true"></span></span>
+        <span class="shoot-top"><span>${esc(option.tag)}</span><span class="radio-indicator" aria-hidden="true"></span></span>
         <strong>${esc(option.title)}</strong>
         <span class="shoot-desc">${esc(option.description)}</span>
         <span class="starting">${esc(t.from.replace("{price}", option.starting))}</span>
