@@ -1,9 +1,10 @@
 /* Homepage embed for the quote calculator — scoped to .qw-embed, uses the main site's CSS variables
    (--bg/--ink/--accent/--line/--font-d...) so the calculator reads as part of the site, not a widget. */
 
-/* hint line + wrapper for the calculator block, full section width (the form stays at the site's 760px) */
-.quote-calc-wrap { margin-top: clamp(40px, 6vw, 72px); }
-.quote-calc-wrap .qf-hint, .quote-form-wrap .qf-hint { font-size: 13px; line-height: 1.7; color: var(--ink-dim); margin: -6px 0 0; max-width: 64ch; }
+/* one rate band per palette zone: automotive sits with the dark top half, real estate with the light bottom half.
+   The band keeps the site's section width; the calculator is capped so it stays readable on ultrawide screens. */
+.quote-sec .qw-embed { max-width: 1320px; }
+.quote-form-wrap .qf-hint { font-size: 13px; line-height: 1.7; color: var(--ink-dim); margin: -6px 0 0; max-width: 64ch; }
 
 .qw-embed .site-header,
 .qw-embed .service-switch,
@@ -105,7 +106,8 @@
 
 /* --- quote panel --- */
 .qw-embed .quote-column { position: sticky; top: 96px; }
-.qw-embed .quote-panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); overflow: hidden; }
+/* the band itself sits on --bg-2, so the panel takes --bg to read as a card in either palette */
+.qw-embed .quote-panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); overflow: hidden; }
 .qw-embed .image-panel { position: relative; }
 .qw-embed .image-panel img { display: block; width: 100%; height: 200px; object-fit: cover; }
 .qw-embed .image-panel span {
