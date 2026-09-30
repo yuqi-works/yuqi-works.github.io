@@ -1,11 +1,7 @@
 /* Static renderer for yuqi.works/quote — no framework, uses QuoteCore (same pricing code as the app). */
 (() => {
-  const C = window.QuoteCore;
-  const PAGE = window.QUOTE_PAGE || { category: "automotive", locale: "en" };
-  const isProperty = PAGE.category === "property";
-  const zh = PAGE.locale === "zh";
-  const t = C.getCopy(PAGE.locale);
-  const money = zh ? C.moneyZh : C.moneyEn;
+  /* mutable so the site's language toggle can re-boot in the other language */
+  let C, PAGE, EMBED, MOUNT, isProperty, zh, t, money, input, copied = false;
   const BASE = "/quote";
   const ICONS = {
     up: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>',
@@ -20,11 +16,22 @@
   const esc = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const href = (path) => `${BASE}${path}`;
 
-  const initial = isProperty
-    ? { shootType: "property", vehicles: 1, photos: 20, video: "none", extras: [], propertySize: "small" }
-    : { shootType: "listing", vehicles: 1, photos: 15, video: "none", extras: [], propertySize: "small" };
-  let input = { ...initial };
-  let copied = false;
+  /** (Re)initialise from window.QUOTE_PAGE / QUOTE_EMBED and paint. */
+  function boot() {
+    C = window.QuoteCore;
+    PAGE = Object.assign({ category: "automotive", locale: "en" }, window.QUOTE_PAGE);
+    EMBED = !!window.QUOTE_EMBED;
+    MOUNT = window.QUOTE_MOUNT || "app";
+    isProperty = PAGE.category === "property";
+    zh = PAGE.locale === "zh";
+    t = C.getCopy(PAGE.locale);
+    money = zh ? C.moneyZh : C.moneyEn;
+    input = isProperty
+      ? { shootType: "property", vehicles: 1, photos: 20, video: "none", extras: [], propertySize: "small" }
+      : { shootType: "listing", vehicles: 1, photos: 15, video: "none", extras: [], propertySize: "small" };
+    copied = false;
+    render();
+  }
 
   const carPhotoConfig = (shootType, vehicles) => C.getCarPhotoConfig(shootType, vehicles);
   const photoConfig = () => (isProperty ? C.getPropertyPhotoConfig(input.propertySize) : carPhotoConfig(input.shootType, input.vehicles));
@@ -123,8 +130,10 @@
     const q = quote();
     const q2 = quote();
     const sizeDetail = (t.sizes.find((size) => size.value === input.propertySize) || t.sizes[0]).detail;
-    document.getElementById("app").innerHTML = `
-    <main lang="${zh ? "zh-CN" : "en"}" class="${cls(isProperty ? "theme-property" : "theme-automotive", zh && "locale-zh")}">
+    const mount = document.getElementById(MOUNT);
+    if (!mount) return;
+    mount.innerHTML = `
+    <main lang="${zh ? "zh-CN" : "en"}" class="${cls("qw-calc", EMBED && "qw-embed", isProperty ? "theme-property" : "theme-automotive", zh && "locale-zh")}">
       <header class="site-header">
         <a class="brand" href="https://yuqi.works/" aria-label="YUQI WORKS portfolio">YUQI<span>·</span>WORKS</a>
         <div class="header-right">
@@ -230,9 +239,42 @@
     render();
   }
 
-  render();
+  boot();
+  /* the site's EN/中文 toggle re-boots the calculator in that language */
+  window.QuoteSite = {
+    setLocale(locale) {
+      const previous = input;
+      window.QUOTE_PAGE = Object.assign({}, window.QUOTE_PAGE, { locale: locale === "zh" ? "zh" : "en" });
+      boot();
+      if (previous) { input = previous; render(); }
+    },
+  };
+
+  /** Embedded mode: hand the configuration to the site's Request-a-Quote form instead of opening mail. */
+  function sendToForm() {
+    const form = document.getElementById("quote-form");
+    const message = document.getElementById("qf-msg");
+    if (!form || !message) return false;
+    message.value = inquiryText();
+    const type = document.getElementById("qf-type");
+    if (type) type.value = isProperty ? "Real Estate" : "Automotive";
+    const status = document.getElementById("qf-status");
+    if (status) status.textContent = zh ? "报价已填入下面的表单，补上联系方式就能发送。" : "Your quote is filled into the form below — add your details and send.";
+    form.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.setTimeout(() => {
+      const name = document.getElementById("qf-name");
+      if (name) name.focus({ preventScroll: true });
+    }, 450);
+    return true;
+  }
 
   document.addEventListener("click", async (event) => {
+    const mail = event.target.closest(".email-button");
+    if (mail && EMBED) {
+      event.preventDefault();
+      if (!sendToForm()) window.location.href = mailto();
+      return;
+    }
     const shoot = event.target.closest("[data-shoot]");
     if (shoot) return selectShootType(shoot.dataset.shoot);
     const size = event.target.closest("[data-size]");

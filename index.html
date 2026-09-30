@@ -425,6 +425,7 @@ footer{
 @media (max-width: 620px){.float-nav{right:14px;bottom:14px}.float-btn{width:42px;height:42px}}
 
 </style>
+<link rel="stylesheet" href="/quote/quote-embed.css">
 
 <!-- ============ SEO ============ -->
 <meta name="description" content="YUQI WORKS (yuqiworks) — Vancouver automotive photographer and commercial drone pilot. Car, street, real estate and aerial photography. Available for events, launches and custom web design.">
@@ -850,8 +851,14 @@ footer{
     <a href="mailto:yuqiworks@gmail.com" data-i18n="mailCta">yuqiworks@gmail.com</a>
   </div>
 
-  <div class="quote-form-wrap">
+  <div class="quote-calc-wrap">
     <h3 class="quote-title" data-i18n="quoteTitle">Request a Quote</h3>
+    <p class="qf-hint" data-i18n="calcHint">Configure your shoot below — the form fills itself in.</p>
+    <div id="qw-quote"></div>
+  </div>
+
+  <div class="quote-form-wrap">
+    <h3 class="quote-title" data-i18n="formTitle">Step 2 — Send your request</h3>
     <form id="quote-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="4407af5b-5b7f-4bc7-bbbe-d58585b79877">
       <input type="hidden" name="subject" value="New Quote Request — YUQI WORKS">
@@ -987,7 +994,7 @@ const I18N = {
     cred3k:"Credential", cred3v:"Commercial Drone Pilot", cred4k:"Gig Highlight", cred4v:"Diamond Rally Crew",
     cred5k:"Gear", cred5v:"Sony A7R III · Z-CAM E2-F6", cred6k:"Base", cred6v:"Vancouver, BC",
     contactTitle:"Let's shoot<br><em>your car.</em>",
-    mailCta:"yuqiworks@gmail.com", quoteTitle:"Request a Quote", quoteName:"Name", quoteEmail:"Email", quoteType:"Project Type", quoteDate:"Preferred Date", quoteMsg:"Project Details", quoteSend:"Send Request", footNote:"Shot on location across the Pacific Northwest", lbHint:"Gallery"
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"Request a Quote", calcHint:"Configure your shoot below — your choices fill in the form automatically.", formTitle:"Step 2 — Send your request", quoteName:"Name", quoteEmail:"Email", quoteType:"Project Type", quoteDate:"Preferred Date", quoteMsg:"Project Details", quoteSend:"Send Request", footNote:"Shot on location across the Pacific Northwest", lbHint:"Gallery"
   },
   zh: {
     navWork:"作品", navRe:"房产", navDrone:"航拍", navGear:"器材", navAbout:"关于", navQuote:"报价", navContact:"联系", ctaQuote:"生成报价", fAll:"全部", fCar:"汽车", fStreet:"街头", fEvent:"活动",
@@ -1058,12 +1065,13 @@ const I18N = {
     cred3k:"资质", cred3v:"商业无人机执照", cred4k:"高光履历", cred4v:"Diamond Rally 团队",
     cred5k:"器材", cred5v:"索尼 A7R III · Z-CAM E2-F6", cred6k:"常驻", cred6v:"温哥华 BC",
     contactTitle:"来拍<br><em>你的车。</em>",
-    mailCta:"yuqiworks@gmail.com", quoteTitle:"获取报价", quoteName:"姓名", quoteEmail:"邮箱", quoteType:"项目类型", quoteDate:"期望日期", quoteMsg:"项目详情", quoteSend:"发送请求", footNote:"拍摄地：太平洋西北海岸各处", lbHint:"作品集"
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"获取报价", calcHint:"先在下面配置拍摄内容，表单会自动填好。", formTitle:"第 2 步 — 发送询价", quoteName:"姓名", quoteEmail:"邮箱", quoteType:"项目类型", quoteDate:"期望日期", quoteMsg:"项目详情", quoteSend:"发送请求", footNote:"拍摄地：太平洋西北海岸各处", lbHint:"作品集"
   }
 };
 function applyLang(lang){
   const dict = I18N[lang] || I18N.en;
   document.documentElement.lang = lang;
+  if (window.QuoteSite) window.QuoteSite.setLocale(lang);
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) el.innerHTML = dict[key];
@@ -1288,5 +1296,16 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
 })();
 
 </script>
+<script>
+/* quote calculator (static, shares the pricing code published under /quote/) */
+window.QUOTE_PAGE = {
+  category: "automotive",
+  locale: (function () { try { return localStorage.getItem("yuqi-lang") === "zh" ? "zh" : "en"; } catch (e) { return "en"; } })()
+};
+window.QUOTE_EMBED = true;
+window.QUOTE_MOUNT = "qw-quote";
+</script>
+<script src="/quote/quote-core.js"></script>
+<script src="/quote/quote.js"></script>
 </body>
 </html>
