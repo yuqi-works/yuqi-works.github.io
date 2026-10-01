@@ -57,7 +57,7 @@ for f in ["index.html", "404.html"]:
     leftover = [t for t in p.stack if t != "html"]
     check(f"2. {f} 标签配对", not p.errors and not leftover,
           f"errors={p.errors[:3]} unclosed={leftover[:5]}")
-descs = re.findall(r'<meta name="description" content="[^"]*"', idx)
+descs = re.findall(r'<meta[^>]*name="description"[^>]*>', idx)
 check("2. index.html description 唯一", len(descs) == 1, f"共 {len(descs)} 个")
 
 # ---------- 3. 内部工具页 noindex ----------

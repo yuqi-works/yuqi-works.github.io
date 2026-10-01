@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-i18n-root>
+
+<html data-i18n-root="" lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="alternate" hreflang="x-default" href="https://yuqi.works/">
-<link rel="alternate" hreflang="en" href="https://yuqi.works/">
-<link rel="alternate" hreflang="zh" href="https://yuqi.works/">
-<title>YUQI WORKS — Automotive Photography, Vancouver BC</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/favicon.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://yuqi.works/" hreflang="x-default" rel="alternate"/>
+<link href="https://yuqi.works/" hreflang="en" rel="alternate"/>
+<link href="https://yuqi.works/" hreflang="zh" rel="alternate"/>
+<title>Car Photography Vancouver | From $275, 3-Day Delivery — YUQI WORKS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link as="image" fetchpriority="high" href="photos/web/01.jpg" rel="preload"/>
 <style>
 /* ============ DESIGN TOKENS ============ */
 :root{
@@ -231,6 +233,35 @@ section{padding:clamp(90px,12vw,180px) var(--pad)}
 .work-card .meta h3{font-family:var(--font-d);font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
 .work-card .meta .year{font-size:12px;font-weight:300;letter-spacing:.22em;color:var(--ink-faint)}
 
+
+/* ============ CLIENT FIT / CONVERSION ============ */
+.nav .nav-quote{color:#0b0b0d;background:var(--accent);padding:9px 14px;border-radius:1px;font-weight:500}
+.nav .nav-quote:hover{color:#0b0b0d;background:#f0a64f}
+.client-fit{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+.fit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fit-card{display:flex;flex-direction:column;min-height:320px;padding:30px;border:1px solid var(--line);background:rgba(255,255,255,.015);transition:transform .25s,border-color .25s,background .25s}
+.fit-card:hover{transform:translateY(-4px);border-color:rgba(232,150,60,.55);background:rgba(232,150,60,.035)}
+.fit-card.featured{border-color:rgba(232,150,60,.4)}
+.fit-tag{font-size:11px;letter-spacing:.28em;color:var(--accent);font-weight:500;margin-bottom:28px}
+.fit-card h3{font-family:var(--font-d);font-size:clamp(22px,2.4vw,32px);text-transform:uppercase;line-height:1.12;margin-bottom:18px}
+.fit-card p{color:var(--ink-dim);font-size:13.5px;line-height:1.9;max-width:38ch}
+.fit-bottom{margin-top:auto;padding-top:28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;align-items:end}
+.fit-bottom strong{font-family:var(--font-d);font-size:18px;font-weight:600}
+.fit-bottom span{font-size:12px;letter-spacing:.08em;color:var(--accent)}
+.proof-row{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.proof-row>div{padding:25px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof-row b{display:block;font-family:var(--font-d);font-size:19px;text-transform:uppercase;margin-bottom:3px}
+.proof-row span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.close-cta{border-top:1px solid var(--line);text-align:left;background:linear-gradient(145deg,rgba(232,150,60,.04),transparent 58%)}
+.close-cta h2{font-family:var(--font-d);font-size:clamp(38px,6vw,76px);line-height:1;text-transform:uppercase;max-width:13ch;margin:14px 0 24px}
+.close-cta p{max-width:62ch;color:var(--ink-dim);font-size:15px;line-height:1.9;margin-bottom:32px}
+@media(max-width:900px){.fit-grid{grid-template-columns:1fr}.fit-card{min-height:0}.proof-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.proof-row{grid-template-columns:1fr}.nav .nav-quote{background:transparent;color:var(--ink-dim);padding:0}}
+
+
+.hero-brandline{margin-top:16px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+.portfolio-more{display:flex;justify-content:center;margin-top:38px}
+
 /* ============ ABOUT ============ */
 .about{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(40px,6vw,100px);align-items:start}
@@ -430,554 +461,841 @@ footer{
 .float-nav.show .float-btn{opacity:1;pointer-events:auto;transform:translateY(0)}
 @media (max-width: 620px){.float-nav{right:14px;bottom:14px}.float-btn{width:42px;height:42px}}
 
-</style>
-<link rel="stylesheet" href="/quote/quote-embed.css">
+/* ============================================================
+   UPGRADE LAYER — added by the 2026-09 conversion review
+   ============================================================ */
 
+/* ---- hero photography ---- */
+.hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;background:#0a0b0e}
+.hero-slide{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.05);
+  transition:opacity 1.5s ease, transform 9s linear;
+  filter:saturate(.9) contrast(1.04) brightness(.7);
+}
+.hero-slide.on{opacity:1;transform:scale(1)}
+.hero-scrim{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(8,9,11,.78) 0%, rgba(8,9,11,.42) 34%, rgba(8,9,11,.9) 100%),
+    linear-gradient(90deg, rgba(8,9,11,.84) 0%, rgba(8,9,11,.3) 58%, rgba(8,9,11,.1) 100%);
+}
+.hero-watermark{opacity:.5}
+@media (prefers-reduced-motion: reduce){
+  .hero-slide{transition:opacity .4s;transform:none}
+  .hero-slide.on{transform:none}
+}
+
+/* ---- credential strip under the hero ---- */
+.trust-strip{
+  margin-top:clamp(30px,4.5vh,52px);padding-top:24px;border-top:1px solid var(--line);
+  display:flex;gap:14px 32px;flex-wrap:wrap;align-items:center;
+}
+.trust-strip .tl{
+  font-family:var(--font-d);font-size:11px;font-weight:400;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);
+}
+.trust-strip ul{list-style:none;display:flex;gap:10px 28px;flex-wrap:wrap}
+.trust-strip li{
+  font-family:var(--font-d);font-weight:300;font-size:12.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-dim);white-space:nowrap;
+}
+
+/* ---- social proof ---- */
+.testi-sec{border-top:1px solid var(--line)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,28px)}
+.testi{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(24px,2.8vw,34px);background:rgba(245,243,238,.015);
+  display:flex;flex-direction:column;gap:20px;
+}
+.testi blockquote{
+  font-family:var(--font-d);font-weight:300;
+  font-size:clamp(15px,1.5vw,19px);line-height:1.6;color:var(--ink);
+}
+.testi blockquote::before{content:"\201C";color:var(--accent);margin-right:4px}
+.testi figcaption{
+  margin-top:auto;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.testi-nums{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,26px);
+  border-top:1px solid var(--line);margin-top:clamp(30px,4vw,50px);padding-top:26px;
+}
+.testi-nums b{display:block;font-family:var(--font-d);font-weight:700;font-size:clamp(20px,2.3vw,30px);letter-spacing:.02em}
+.testi-nums span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint)}
+
+/* ---- process + risk badges ---- */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,30px)}
+.steps li{border-top:1px solid var(--accent);padding-top:22px}
+.step-n{font-family:var(--font-d);font-weight:300;font-size:12px;letter-spacing:.34em;color:var(--accent)}
+.steps h3{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:.07em;text-transform:uppercase;margin:12px 0 10px}
+.steps p{font-size:13.5px;line-height:1.95;color:var(--ink-dim);max-width:40ch}
+.badges{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(30px,4vw,46px)}
+.badges li{
+  font-size:12px;letter-spacing:.1em;color:var(--ink-dim);
+  border:1px solid var(--line);border-radius:999px;padding:9px 18px;
+}
+
+/* ---- FAQ (native <details>, no JS) ---- */
+.faq-sec{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.faq-list{border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list summary{
+  cursor:pointer;position:relative;list-style:none;
+  padding:22px 44px 22px 0;
+  font-family:var(--font-d);font-weight:500;font-size:clamp(13.5px,1.4vw,16px);
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{
+  content:"+";position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  color:var(--accent);font-weight:300;font-size:22px;line-height:1;
+}
+.faq-list details[open] summary::after{content:"\2013"}
+.faq-list p{padding:0 44px 24px 0;max-width:78ch;font-size:14px;line-height:2;color:var(--ink-dim)}
+
+/* ---- lead magnet + B2B ---- */
+.lead{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(26px,5vw,70px);align-items:center}
+.lead h2{
+  font-family:var(--font-d);font-weight:650;text-transform:uppercase;
+  font-size:clamp(26px,3.3vw,42px);line-height:1.12;margin:14px 0 18px;
+}
+.lead p{color:var(--ink-dim);font-size:14px;line-height:2;max-width:54ch}
+.lead p strong{color:var(--ink);font-weight:400}
+.lead-form{display:grid;gap:12px;align-content:start}
+.lead-form input[type=email]{
+  background:transparent;border:1px solid var(--line);border-radius:var(--radius);
+  color:var(--ink);font-family:var(--font-b);font-weight:300;font-size:14px;
+  padding:15px 16px;outline:none;width:100%;box-sizing:border-box;
+}
+.lead-form input[type=email]:focus{border-color:var(--accent)}
+.lead-note{font-size:11.5px;letter-spacing:.06em;color:var(--ink-faint)}
+.b2b{
+  margin-top:clamp(40px,6vw,70px);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(22px,3vw,34px);
+  display:flex;gap:26px;justify-content:space-between;align-items:center;flex-wrap:wrap;
+}
+.b2b h3{font-family:var(--font-d);font-weight:600;font-size:15px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.b2b p{font-size:13.5px;line-height:1.9;color:var(--ink-dim);max-width:56ch}
+.b2b-actions{display:flex;gap:12px;flex-wrap:wrap}
+.b2b-actions a{
+  display:inline-block;padding:14px 26px;border:1px solid var(--line);border-radius:var(--radius);
+  font-family:var(--font-d);font-weight:500;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;transition:all .22s;white-space:nowrap;
+}
+.b2b-actions a:hover{border-color:var(--accent);color:var(--accent)}
+.b2b-actions a.solid{background:var(--accent);border-color:var(--accent);color:#0b0b0d}
+
+/* ---- form helpers ---- */
+.hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media (max-width: 900px){
+  .testi-grid{grid-template-columns:1fr}
+  .testi-nums{grid-template-columns:1fr 1fr;gap:22px}
+  .steps{grid-template-columns:1fr}
+  .lead{grid-template-columns:1fr}
+}
+@media (max-width: 620px){
+  /* the section header was a two-column flex on phones: title squeezed to one word per line */
+  .sect-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .sect-head p{max-width:none;font-size:13px}
+  .sect-head h2{font-size:clamp(26px,8.5vw,36px)}
+  /* hero: photo is now the background, so the box can be shorter and the outline text goes away */
+  .hero{min-height:88vh;padding:0 20px 60px}
+  .hero-watermark{display:none}
+  .hero h1{font-size:clamp(34px,10.5vw,48px);max-width:none}
+  .hero-slide{filter:saturate(.9) contrast(1.04) brightness(.58)}
+  .cta-row{flex-direction:column;align-items:stretch;gap:10px}
+  .cta-row .btn{width:100%;text-align:center}
+  .trust-strip li{white-space:normal}
+  /* the sticky estimate bar sits at the bottom of the viewport while the configurator
+     is on screen — lift the floating buttons so they do not cover its CTA */
+  .float-nav{right:14px;bottom:92px}
+  .b2b-actions{width:100%}
+  .b2b-actions a{flex:1 1 100%;text-align:center}
+  .lead-form .btn{width:100%}
+}
+
+
+/* ============ CONVERSION V2 ============ */
+.fit-card.featured{border-color:rgba(232,150,60,.65);box-shadow:0 0 0 1px rgba(232,150,60,.08) inset}
+.fit-card.featured::before{content:"MOST POPULAR";align-self:flex-start;margin:-12px 0 18px;padding:5px 9px;border-radius:999px;background:var(--accent);color:#0b0b0d;font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.14em}
+.daily-driver-note{margin:28px auto 0;max-width:760px;text-align:center;font-size:14px;line-height:1.8;color:var(--ink-dim)}
+.daily-driver-note strong{color:var(--ink)}
+.drone-service-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,70px);align-items:start}
+.drone-lead{font-size:clamp(16px,1.7vw,20px);line-height:1.85;color:var(--ink-dim);margin:0 0 28px}
+.drone-use-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.drone-use-grid>div{padding:18px;border:1px solid var(--line);border-radius:var(--radius)}
+.drone-use-grid strong{display:block;font-family:var(--font-d);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+.drone-use-grid span{display:block;font-size:12.5px;line-height:1.65;color:var(--ink-dim)}
+.drone-credentials{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+.drone-credentials span{border:1px solid var(--line);border-radius:999px;padding:8px 11px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim)}
+.drone-actions{margin-top:22px}
+.equipment-note{margin-top:36px;padding:20px 0 0;border-top:1px solid var(--line);font-size:12.5px;line-height:1.8;color:var(--ink-dim)}
+.equipment-note strong{color:var(--ink);font-family:var(--font-d);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-right:8px}
+.site-mobile-cta{display:none}
+@media(max-width:900px){.drone-service-grid{grid-template-columns:1fr}.drone-use-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){
+  body{padding-bottom:72px}
+  .drone-use-grid{grid-template-columns:1fr}
+  .site-mobile-cta{position:fixed;display:flex;left:10px;right:10px;bottom:10px;z-index:70;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 14px;border:1px solid rgba(245,243,238,.16);border-radius:10px;background:rgba(11,11,13,.94);backdrop-filter:blur(16px);box-shadow:0 12px 35px rgba(0,0,0,.35);transition:opacity .2s,transform .2s}
+  .site-mobile-cta.hide{opacity:0;pointer-events:none;transform:translateY(12px)}
+  .site-mobile-cta div{display:flex;flex-direction:column;min-width:0}
+  .site-mobile-cta span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9b978f}
+  .site-mobile-cta strong{font-family:var(--font-d);font-size:15px;color:#f5f3ee;white-space:nowrap}
+  .site-mobile-cta a{flex:none;padding:11px 14px;border-radius:6px;background:#e8963c;color:#0b0b0d;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .float-nav{bottom:94px}
+}
+
+/* ============ v3 ============ */
+.testi-grid.single{grid-template-columns:minmax(0,900px)}
+.testi-grid.single .testi{border-left:2px solid var(--accent)}
+.testi-grid.single .testi blockquote{font-size:clamp(18px,2.1vw,26px);line-height:1.55}
+/* tighten the hero so the stat row and credentials sit closer to the fold */
+.hero-sub{margin-bottom:28px}
+.hero-facts{margin-top:clamp(26px,4vh,52px)}
+/* headline 96 -> 80px on desktop only, so the whole credential strip clears the fold
+   of a 900px-tall laptop window; mobile keeps its own size from the 620px rules.
+   5.56vw == 80px at a 1440px window. Measured: strip bottom 961px -> ~890px (< 900). */
+@media (min-width: 621px){
+  .hero h1{font-size:clamp(38px,5.56vw,80px);margin-bottom:26px}
+}
+.trust-strip{margin-top:clamp(22px,3.4vh,42px);padding-top:18px}
+/* the nav CTA sits at the end of the row and no longer shouts over the hero button */
+.nav .nav-quote{padding:8px 13px;font-size:12px;letter-spacing:.14em}
+
+</style>
+<link href="/quote/quote-embed.css" rel="stylesheet"/>
 <!-- ============ SEO ============ -->
-<meta name="description" content="YUQI WORKS (yuqiworks) — Vancouver automotive photographer and commercial drone pilot. Car, street, real estate and aerial photography. Available for events, launches and custom web design.">
-<meta name="keywords" content="yuqiworks, yuqi works, YUQI WORKS, vancouver photographer, automotive photography, car photography, real estate photography, drone pilot, vancouver web designer">
-<meta name="author" content="YUQI WANG">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://yuqi.works/">
+<meta content="Metro Vancouver automotive photography from $275 CAD, with clear pricing and 2–3 business day delivery. Real estate and professional aerial imaging also available." name="description"/>
+<meta content="YUQI WANG" name="author"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://yuqi.works/" rel="canonical"/>
 <!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="YUQI WORKS — Vancouver Automotive Photographer">
-<meta property="og:description" content="Car, street, real estate & aerial photography. Commercial drone pilot. Vancouver BC.">
-<meta property="og:url" content="https://yuqi.works/">
-<meta property="og:image" content="https://yuqi.works/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:site_name" content="YUQI WORKS">
+<meta content="website" property="og:type"/>
+<meta content="YUQI WORKS — Vancouver Automotive Photographer" property="og:title"/>
+<meta content="Professional automotive photography in Metro Vancouver from $275 CAD, plus real estate and commercial aerial imaging." property="og:description"/>
+<meta content="https://yuqi.works/" property="og:url"/>
+<meta content="https://yuqi.works/og-image.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="YUQI WORKS" property="og:site_name"/>
 <!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="YUQI WORKS — Vancouver Automotive Photographer">
-<meta name="twitter:description" content="Car, street, real estate & aerial photography. Commercial drone pilot. Vancouver BC.">
-<meta name="twitter:image" content="https://yuqi.works/og-image.jpg">
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="YUQI WORKS — Vancouver Automotive Photographer" name="twitter:title"/>
+<meta content="Professional automotive photography in Metro Vancouver from $275 CAD, plus real estate and commercial aerial imaging." name="twitter:description"/>
+<meta content="https://yuqi.works/og-image.jpg" name="twitter:image"/>
 <!-- JSON-LD Person / LocalBusiness -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "YUQI WANG",
-  "alternateName": "yuqiworks, YUQI WORKS",
-  "jobTitle": "Automotive Photographer & Commercial Drone Pilot",
+  "@type": "ProfessionalService",
+  "@id": "https://yuqi.works/#business",
+  "name": "YUQI WORKS",
+  "alternateName": "yuqiworks, YUQI WANG",
+  "description": "Vancouver automotive, real estate and aerial photography by a licensed commercial drone pilot.",
   "url": "https://yuqi.works/",
+  "image": "https://yuqi.works/og-image.jpg",
+  "logo": "https://yuqi.works/og-image.jpg",
   "email": "mailto:yuqiworks@gmail.com",
-  "sameAs": ["https://www.instagram.com/yuqiwang_w/"],
+  "priceRange": "$185–$1,200 CAD",
+  "currenciesAccepted": "CAD",
+  "paymentAccepted": "E-transfer, credit card, invoice",
+  "founder": {"@type": "Person", "name": "YUQI WANG", "jobTitle": "Automotive Photographer & Commercial Drone Pilot"},
   "address": {"@type": "PostalAddress", "addressLocality": "Vancouver", "addressRegion": "BC", "addressCountry": "CA"},
-  "knowsAbout": ["Automotive photography", "Real estate photography", "Aerial photography", "Drone piloting", "Web design"]
+  "geo": {"@type": "GeoCoordinates", "latitude": 49.2827, "longitude": -123.1207},
+  "areaServed": [
+    {"@type": "City", "name": "Vancouver"},
+    {"@type": "City", "name": "Richmond"},
+    {"@type": "City", "name": "Burnaby"},
+    {"@type": "City", "name": "Surrey"},
+    {"@type": "City", "name": "Coquitlam"},
+    {"@type": "City", "name": "North Vancouver"},
+    {"@type": "Place", "name": "Sea-to-Sky corridor"}
+  ],
+  "sameAs": ["https://www.instagram.com/yuqiwang_w/"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Photography packages",
+    "itemListElement": [
+      {"@type": "Offer", "name": "The Listing — automotive sale/listing", "price": "275", "priceCurrency": "CAD"},
+      {"@type": "Offer", "name": "The Portraits — owner/collector", "price": "425", "priceCurrency": "CAD"},
+      {"@type": "Offer", "name": "The Campaign — brand/business", "price": "650", "priceCurrency": "CAD"},
+      {"@type": "Offer", "name": "The Property — real estate listing", "price": "185", "priceCurrency": "CAD"}
+    ]
+  },
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {"@type": "Service", "serviceType": "Automotive photography, real estate photography, aerial photography"}
+  }
 }
 </script>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How fast can you shoot?", "acceptedAnswer": {"@type": "Answer", "text": "Usually within 3–5 days, and same-week for listings when the calendar allows."}},
+    {"@type": "Question", "name": "What if it rains?", "acceptedAnswer": {"@type": "Answer", "text": "We reschedule at no cost. In Vancouver, I plan for it."}},
+    {"@type": "Question", "name": "Does the car need to be clean?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — a wash is the one thing that changes everything. I send a short prep list before the shoot."}},
+    {"@type": "Question", "name": "Where can I use the photos?", "acceptedAnswer": {"@type": "Answer", "text": "Personal and own-channel use is included in every package. Paid advertising and third-party use are quoted separately."}},
+    {"@type": "Question", "name": "Do you travel outside Vancouver?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — Richmond, Burnaby, Surrey, Coquitlam, the North Shore and the Sea-to-Sky. Longer trips are confirmed in the quote."}},
+    {"@type": "Question", "name": "Can you shoot a whole batch of inventory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Dealership batch rates start at 5 cars per visit."}}
+  ]
+}
+</script>
 </head>
 <body>
-
 <!-- ============ TOP BAR ============ -->
 <header class="topbar">
-  <a class="brand" href="#top">YUQI<em>·</em>WORKS</a>
-  <nav class="nav">
-    <a href="#work" data-i18n="navWork">Work</a>
-    <a href="#re" data-i18n="navRe">Real Estate</a>
-    <a href="#drone" data-i18n="navDrone">Drone</a>
-    <a href="#gear" data-i18n="navGear">Gear</a>
-    <a href="#about" data-i18n="navAbout">About</a>
-    <a href="#quote-auto" data-i18n="navQuote">Pricing</a>
-    <a href="#contact" data-i18n="navContact">Contact</a>
-    <div class="lang" role="group" aria-label="Language">
-      <button data-lang="en" aria-pressed="true">EN</button>
-      <button data-lang="zh" aria-pressed="false">中</button>
-    </div>
-  </nav>
-  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+<a class="brand" href="#top">YUQI<em>·</em>WORKS</a>
+<nav class="nav">
+<a data-i18n="navWork" href="#work">Work</a>
+<a data-i18n="navRe" href="#re">Real Estate</a>
+<a data-i18n="navDrone" href="#drone">Drone</a>
+<a class="nav-quote" data-i18n="navQuote" href="#quote-auto">Get a Quote</a>
+<a data-i18n="navAbout" href="#about">About</a>
+<a data-i18n="navContact" href="#contact">Contact</a>
+<div aria-label="Language" class="lang" role="group">
+<button aria-pressed="true" data-lang="en">EN</button>
+<button aria-pressed="false" data-lang="zh">中</button>
+</div>
+</nav>
+<button aria-expanded="false" aria-label="Menu" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
 </header>
-
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div class="hero-watermark">PHOTOGRAPHY</div>
-  <div class="hero-inner">
-    <p class="kicker" data-i18n="heroKicker">Automotive Photography · Vancouver BC</p>
-    <h1 data-i18n="heroTitle">Photography,<br><span>built for speed</span></h1>
-    <p class="hero-sub" data-i18n="heroSub">
-      Ten years behind the lens. Two Camaros in the garage.
-      Commercial drone pilot and <strong>Diamond Rally</strong> staff photographer —
-      chasing light, motion and metal across the Pacific Northwest.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-solid" href="#work" data-i18n="ctaWork">View Work</a>
-      <a class="btn btn-ghost" href="#quote-auto" data-i18n="ctaQuote">Build a Quote</a>
-    </div>
-    <div class="hero-facts">
-      <div class="fact"><b data-i18n="f1v">10+</b><span data-i18n="f1k">Years Shooting</span></div>
-      <div class="fact"><b data-i18n="f2v">2</b><span data-i18n="f2k">Camaros</span></div>
-      <div class="fact"><b data-i18n="f3v">Diamond Rally</b><span data-i18n="f3k">Staff Photographer</span></div>
-      <div class="fact"><b data-i18n="f4v">Drone</b><span data-i18n="f4k">Commercial Pilot</span></div>
-    </div>
-  </div>
+<div class="hero-bg"></div>
+<div aria-hidden="true" class="hero-slides">
+<img alt="" class="hero-slide on" decoding="async" fetchpriority="high" src="photos/web/01.jpg"/>
+<img alt="" class="hero-slide" decoding="async" loading="lazy" src="photos/web/13.jpg"/>
+<img alt="" class="hero-slide" decoding="async" loading="lazy" src="photos/web/03.jpg"/>
+</div>
+<div class="hero-scrim"></div>
+<div class="hero-watermark">PHOTOGRAPHY</div>
+<div class="hero-inner">
+<p class="kicker" data-i18n="heroKicker">Automotive Photography · Vancouver BC</p>
+<h1 data-i18n="heroTitle">Make your car<br/><span>impossible to ignore.</span></h1>
+<p class="hero-sub" data-i18n="heroSub">Professional automotive photography for <strong>private sellers, enthusiasts, collectors and automotive businesses</strong> across Metro Vancouver. Packages from <strong>$275 CAD</strong>, with most shoots delivered in <strong>2–3 business days</strong>.</p>
+<div class="cta-row">
+<a class="btn btn-solid" data-i18n="ctaQuote" href="#quote-auto">Get an Instant Estimate</a>
+<a class="btn btn-ghost" data-i18n="ctaWork" href="#work">See the Work</a>
+</div>
+<div class="hero-facts">
+<div class="fact"><b data-i18n="f1v">2–3 days</b><span data-i18n="f1k">Typical Delivery</span></div>
+<div class="fact"><b data-i18n="f2v">Metro</b><span data-i18n="f2k">Vancouver Service</span></div>
+<div class="fact"><b data-i18n="f3v">$275 CAD</b><span data-i18n="f3k">Starting Price</span></div>
+<div class="fact"><b data-i18n="f4v">10+</b><span data-i18n="f4k">Years Shooting</span></div>
+</div>
+<div class="trust-strip">
+<span class="tl" data-i18n="trustLabel">Experience includes</span>
+<ul>
+<li>Diamond Rally · Staff Photographer</li>
+<li>Vancouver International Auto Show · Coverage</li>
+<li>Luxury Supercar Weekend · Coverage</li>
+<li>OpenRoad VW Burnaby · Dealership</li>
+<li>Private Owners &amp; Collectors</li>
+</ul>
+</div>
+</div>
 </section>
-
 <!-- ============ GALLERY ============ -->
 <section id="work">
-  <div class="sect-head">
-    <div>
-      <span class="no" data-i18n="workNo">01 — Selected Work</span>
-      <h2 data-i18n="workTitle">Featured Shots</h2>
-    </div>
-    <p data-i18n="workDesc">A handful of frames from the archive. Full sets on Instagram — new work drops there first.</p>
-  </div>
-<div class="filters" role="group" aria-label="Filter">
-  <button class="filter-btn on" data-f="all" data-i18n="fAll">All</button>
-  <button class="filter-btn" data-f="car" data-i18n="fCar">Cars</button>
-  <button class="filter-btn" data-f="street" data-i18n="fStreet">Street</button>
-  <button class="filter-btn" data-f="event" data-i18n="fEvent">Events</button>
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="workNo">01 — Selected Work</span>
+<h2 data-i18n="workTitle">Featured Shots</h2>
 </div>
-  <!--
+<p data-i18n="workDesc">Selected frames from the last three years. Looking for something specific — your model, your colour, a night shot? Ask and I'll send the set.</p>
+</div>
+<div aria-label="Filter" class="filters" role="group">
+<button class="filter-btn on" data-f="all" data-i18n="fAll">All</button>
+<button class="filter-btn" data-f="car" data-i18n="fCar">Cars</button>
+<button class="filter-btn" data-f="street" data-i18n="fStreet">Street</button>
+<button class="filter-btn" data-f="event" data-i18n="fEvent">Events</button>
+</div>
+<!--
     HOW TO REPLACE PLACEHOLDERS (如何替换图片):
     1. Put your photo in the photos/ folder next to this file.
     2. Replace the <div class="thumb scene-xxx">...</div> block with:
        <img class="thumb" src="photos/your-photo.jpg" alt="description">
        (keep the class "thumb" so the layout keeps working)
   -->
-  <div class="work-grid">
+<div class="work-grid">
 <figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/01.jpg" alt="Chevrolet Camaro ZL1" loading="lazy"></div>
+<div class="thumb"><img alt="Chevrolet Camaro ZL1" loading="lazy" src="photos/web/01.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p01t">Chevrolet Camaro ZL1</h3><span class="year" data-i18n="p01y"></span></figcaption>
 </figure>
-<figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/03.jpg" alt="Ford Mustang GT500" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p03t">Ford Mustang GT500</h3><span class="year" data-i18n="p03y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/04.jpg" alt="Nissan GT-R" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p04t">Nissan GT-R</h3><span class="year" data-i18n="p04y"></span></figcaption>
-</figure>
+
+
 <figure class="work-card tall" data-cat="car">
-<div class="thumb"><img src="photos/web/05.jpg" alt="Ferrari 488 Pista" loading="lazy"></div>
+<div class="thumb"><img alt="Ferrari 488 Pista" loading="lazy" src="photos/web/05.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p05t">Ferrari 488 Pista</h3><span class="year" data-i18n="p05y"></span></figcaption>
 </figure>
+
+
 <figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/06.jpg" alt="Chevrolet Camaro RS" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p06t">Chevrolet Camaro RS</h3><span class="year" data-i18n="p06y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/13.jpg" alt="Lamborghini Aventador SV" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p13t">Lamborghini Aventador SV</h3><span class="year" data-i18n="p13y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/14.jpg" alt="Koenigsegg Jesko · Canada Debut" loading="lazy"></div>
+<div class="thumb"><img alt="Koenigsegg Jesko · Canada Debut" loading="lazy" src="photos/web/14.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p14t">Koenigsegg Jesko · Canada Debut</h3><span class="year" data-i18n="p14y"></span></figcaption>
 </figure>
+
+
+
+
+<figure class="work-card" data-cat="car">
+<div class="thumb"><img alt="VW Golf R · Dealership" loading="lazy" src="photos/web/30.jpg"/></div>
+<figcaption class="meta"><h3 data-i18n="p30t">OpenRoad VW Burnaby · Showroom</h3><span class="year" data-i18n="p30y"></span></figcaption>
+</figure>
+
+
 <figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/15.jpg" alt="Koenigsegg Jesko · Canada Debut" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p15t">Koenigsegg Jesko · Canada Debut</h3><span class="year" data-i18n="p15y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/20.jpg" alt="Lamborghini Aventador SVJ" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p20t">Lamborghini Aventador SVJ</h3><span class="year" data-i18n="p20y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/23.jpg" alt="Lamborghini Aventador SVJ" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p23t">Lamborghini Aventador SVJ</h3><span class="year" data-i18n="p23y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/24.jpg" alt="McLaren 600LT" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p24t">McLaren 600LT</h3><span class="year" data-i18n="p24y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/30.jpg" alt="VW Golf R · Dealership" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p30t">VW Golf R · Dealership</h3><span class="year" data-i18n="p30y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/32.jpg" alt="VW Golf R" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p32t">VW Golf R</h3><span class="year" data-i18n="p32y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/33.jpg" alt="VW Golf R" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p33t">VW Golf R</h3><span class="year" data-i18n="p33y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/51.jpg" alt="Lamborghini Aventador SV" loading="lazy"></div>
+<div class="thumb"><img alt="Lamborghini Aventador SV" loading="lazy" src="photos/web/51.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p51t">Lamborghini Aventador SV</h3><span class="year" data-i18n="p51y"></span></figcaption>
 </figure>
-<figure class="work-card" data-cat="car">
-<div class="thumb"><img src="photos/web/52.jpg" alt="Lamborghini Aventador SV" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p52t">Lamborghini Aventador SV</h3><span class="year" data-i18n="p52y"></span></figcaption>
-</figure>
+
+
 <figure class="work-card lg" data-cat="event">
-<div class="thumb"><img src="photos/web/57.jpg" alt="Lamborghini Huracán Tecnica" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p57t">Lamborghini Huracán Tecnica</h3><span class="year" data-i18n="p57y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="event">
-<div class="thumb"><img src="photos/web/58.jpg" alt="Porsche 911 GT3 RS" loading="lazy"></div>
+<div class="thumb"><img alt="Porsche 911 GT3 RS" loading="lazy" src="photos/web/58.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p58t">Porsche 911 GT3 RS</h3><span class="year" data-i18n="p58y"></span></figcaption>
 </figure>
 <figure class="work-card lg" data-cat="event">
-<div class="thumb"><img src="photos/web/59.jpg" alt="Vancouver Autoshow 2026" loading="lazy"></div>
+<div class="thumb"><img alt="Vancouver Autoshow 2026" loading="lazy" src="photos/web/59.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p59t">Vancouver Autoshow 2026</h3><span class="year" data-i18n="p59y"></span></figcaption>
 </figure>
-<figure class="work-card lg" data-cat="event">
-<div class="thumb"><img src="photos/web/60.jpg" alt="Vancouver Autoshow 2026" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p60t">Vancouver Autoshow 2026</h3><span class="year" data-i18n="p60y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="event">
-<div class="thumb"><img src="photos/web/61.jpg" alt="Vancouver Autoshow 2026" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p61t">Vancouver Autoshow 2026</h3><span class="year" data-i18n="p61y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="event">
-<div class="thumb"><img src="photos/web/66.jpg" alt="Luxury Supercar Weekend 2018" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p66t">Luxury Supercar Weekend 2018</h3><span class="year" data-i18n="p66y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="event">
-<div class="thumb"><img src="photos/web/67.jpg" alt="Luxury Supercar Weekend 2018" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p67t">Luxury Supercar Weekend 2018</h3><span class="year" data-i18n="p67y"></span></figcaption>
-</figure>
+
+
+
+
 <figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/68.jpg" alt="Audi R8" loading="lazy"></div>
+<div class="thumb"><img alt="Audi R8" loading="lazy" src="photos/web/68.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p68t">Audi R8</h3><span class="year" data-i18n="p68y"></span></figcaption>
 </figure>
-<figure class="work-card lg" data-cat="car">
-<div class="thumb"><img src="photos/web/69.jpg" alt="Audi R8" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p69t">Audi R8</h3><span class="year" data-i18n="p69y"></span></figcaption>
-</figure>
+
 <figure class="work-card lg" data-cat="street">
-<div class="thumb"><img src="photos/web/70.jpg" alt="Raincity Vancouver" loading="lazy"></div>
+<div class="thumb"><img alt="Raincity Vancouver" loading="lazy" src="photos/web/70.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p70t">Raincity Vancouver</h3><span class="year" data-i18n="p70y"></span></figcaption>
 </figure>
-<figure class="work-card" data-cat="street">
-<div class="thumb"><img src="photos/web/71.jpg" alt="Raincity Vancouver" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p71t">Raincity Vancouver</h3><span class="year" data-i18n="p71y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="street">
-<div class="thumb"><img src="photos/web/72.jpg" alt="Raincity Vancouver" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p72t">Raincity Vancouver</h3><span class="year" data-i18n="p72y"></span></figcaption>
-</figure>
+
+
 <figure class="work-card lg" data-cat="street">
-<div class="thumb"><img src="photos/web/73.jpg" alt="Night Vancouver" loading="lazy"></div>
+<div class="thumb"><img alt="Night Vancouver" loading="lazy" src="photos/web/73.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p73t">Night Vancouver</h3><span class="year" data-i18n="p73y"></span></figcaption>
 </figure>
-<figure class="work-card lg" data-cat="street">
-<div class="thumb"><img src="photos/web/74.jpg" alt="Raincity Vancouver" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p74t">Raincity Vancouver</h3><span class="year" data-i18n="p74y"></span></figcaption>
-</figure>
+
 <figure class="work-card" data-cat="street">
-<div class="thumb"><img src="photos/web/75.jpg" alt="Lifestyle" loading="lazy"></div>
+<div class="thumb"><img alt="Lifestyle" loading="lazy" src="photos/web/75.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p75t">Lifestyle</h3><span class="year" data-i18n="p75y"></span></figcaption>
 </figure>
+
 <figure class="work-card" data-cat="street">
-<div class="thumb"><img src="photos/web/76.jpg" alt="Night Vancouver" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p76t">Night Vancouver</h3><span class="year" data-i18n="p76y"></span></figcaption>
-</figure>
-<figure class="work-card" data-cat="street">
-<div class="thumb"><img src="photos/web/77.jpg" alt="Coquitlam City" loading="lazy"></div>
+<div class="thumb"><img alt="Coquitlam City" loading="lazy" src="photos/web/77.jpg"/></div>
 <figcaption class="meta"><h3 data-i18n="p77t">Coquitlam City</h3><span class="year" data-i18n="p77y"></span></figcaption>
 </figure>
-<figure class="work-card" data-cat="street">
-<div class="thumb"><img src="photos/web/78.jpg" alt="Coquitlam City" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p78t">Coquitlam City</h3><span class="year" data-i18n="p78y"></span></figcaption>
-</figure>
-<figure class="work-card tall" data-cat="street">
-<div class="thumb"><img src="photos/web/79.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p79t">Life Chengdu</h3><span class="year" data-i18n="p79y"></span></figcaption>
-</figure>
-<figure class="work-card tall" data-cat="street">
-<div class="thumb"><img src="photos/web/80.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p80t">Life Chengdu</h3><span class="year" data-i18n="p80y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="street">
-<div class="thumb"><img src="photos/web/81.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p81t">Life Chengdu</h3><span class="year" data-i18n="p81y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="street">
-<div class="thumb"><img src="photos/web/82.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p82t">Life Chengdu</h3><span class="year" data-i18n="p82y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="street">
-<div class="thumb"><img src="photos/web/83.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p83t">Life Chengdu</h3><span class="year" data-i18n="p83y"></span></figcaption>
-</figure>
-<figure class="work-card tall" data-cat="street">
-<div class="thumb"><img src="photos/web/84.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p84t">Life Chengdu</h3><span class="year" data-i18n="p84y"></span></figcaption>
-</figure>
-<figure class="work-card lg" data-cat="street">
-<div class="thumb"><img src="photos/web/85.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p85t">Life Chengdu</h3><span class="year" data-i18n="p85y"></span></figcaption>
-</figure>
-<figure class="work-card tall" data-cat="street">
-<div class="thumb"><img src="photos/web/86.jpg" alt="Life Chengdu" loading="lazy"></div>
-<figcaption class="meta"><h3 data-i18n="p86t">Life Chengdu</h3><span class="year" data-i18n="p86y"></span></figcaption>
-</figure>
-  </div>
-</section>
 
-<!-- ============ CONTACT ============ -->
+</div><div class="portfolio-more"><a class="btn btn-ghost" data-i18n="portfolioMore" href="https://www.instagram.com/yuqiwang_w/" rel="noopener" target="_blank">View More Work on Instagram</a></div>
+</section>
+<!-- ============ CLIENT FIT / CONVERSION ============ -->
+<section class="client-fit" id="client-fit">
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="fitNo">What I shoot</span>
+<h2 data-i18n="fitTitle">Three kinds of work.</h2>
+</div>
+<p data-i18n="fitDesc">Automotive, real estate and aerial — each has its own page with recent work, pricing and answers.</p>
+</div>
+<div class="fit-grid">
+<a class="fit-card" href="#quote-auto">
+<span class="fit-tag" data-i18n="fit1tag">AUTOMOTIVE</span>
+<h3 data-i18n="fit1title">Car Photography</h3>
+<p data-i18n="fit1body">Listing photos, owner and collector portraits, and dealership inventory across Metro Vancouver.</p>
+<div class="fit-bottom"><strong data-i18n="fit1price">From $275</strong><span data-i18n="fit1cta">Build estimate →</span></div>
+</a>
+<a class="fit-card" href="#quote-re">
+<span class="fit-tag" data-i18n="fit2tag">REAL ESTATE</span>
+<h3 data-i18n="fit2title">Real Estate Photography</h3>
+<p data-i18n="fit2body">Interior and exterior listing photography for realtors, developers and private sellers.</p>
+<div class="fit-bottom"><strong data-i18n="fit2price">From $185</strong><span data-i18n="fit2cta">Build estimate →</span></div>
+</a>
+<a class="fit-card" href="#drone">
+<span class="fit-tag" data-i18n="fit3tag">AERIAL</span>
+<h3 data-i18n="fit3title">Drone &amp; Aerial</h3>
+<p data-i18n="fit3body">Property, construction, automotive and brand aerials — shot by a Transport Canada Advanced certified pilot.</p>
+<div class="fit-bottom"><strong data-i18n="fit3price">Request a quote</strong><span data-i18n="fitCta">See the work →</span></div>
+</a>
+</div>
+<div class="proof-row">
+<div><b>2–3 days</b><span>Typical delivery</span></div>
+<div><b>$275 CAD</b><span>Starting price</span></div>
+<div><b>10+ years</b><span>Behind the camera</span></div>
+<div><b>Metro Vancouver</b><span>On-location service</span></div>
+</div>
+<p class="daily-driver-note" data-i18n="dailyDriver"><strong>From daily drivers to collector cars.</strong> If the car matters to you, it is worth photographing properly.</p>
+</section>
 <!-- ============ DRONE ============ -->
-
 <!-- ============ AUTOMOTIVE RATES ============ -->
+<!-- ============ SOCIAL PROOF ============ -->
+<section class="testi-sec" id="testimonials">
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="testiNo">Selected clients</span>
+<h2 data-i18n="testiTitle">What clients say</h2>
+</div>
+<p data-i18n="testiDesc">Ten years shooting in Vancouver — private owners, dealerships and realtors.</p>
+</div>
+<div class="testi-grid single">
+<figure class="testi">
+<blockquote>Fast turnaround and the photos came out way better than anything I could take myself.</blockquote>
+<figcaption>BMW M4 Owner · Vancouver</figcaption>
+</figure>
+<!-- Two more slots already have styling. Ask every client after delivery:
+       1) What were you worried about before the shoot?
+       2) What happened after the photos went up?
+     Use their answer verbatim, then paste it here and delete "single" from
+     class="testi-grid single". -->
+</div>
+</section>
 <section class="quote-sec" id="quote-auto">
-  <div class="sect-head">
-    <div>
-      <span class="no" data-i18n="qaNo">06 — Automotive Rates</span>
-      <h2 data-i18n="qaTitle">Build your shoot</h2>
-    </div>
-    <p data-i18n="qaDesc">Pick a package, count the cars, add motion — the estimate updates as you go. Send it over and I'll confirm the details within a day.</p>
-  </div>
-  <div id="qw-quote-auto"></div>
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="qaNo">02 — Automotive Pricing</span>
+<h2 data-i18n="qaTitle">Build your shoot</h2>
+</div>
+<p data-i18n="qaDesc">Pick a package, count the cars, add motion — the estimate updates as you go. Send it over and I'll confirm the details within a day.</p>
+</div>
+<div id="qw-quote-auto"></div>
+<div class="b2b">
+<div>
+<h3 data-i18n="b2bTitle">Dealerships &amp; automotive businesses</h3>
+<p data-i18n="b2bDesc">Need recurring inventory or social content? Ask about batch rates for 5+ vehicles, fixed monthly shoot days and consistent editing across every listing.</p>
+</div>
+<div class="b2b-actions">
+<a class="solid" data-i18n="b2bBtn1" href="mailto:yuqiworks@gmail.com?subject=Dealership%20batch%20pricing">Ask for batch pricing</a>
+<a data-i18n="b2bBtn2" href="mailto:yuqiworks@gmail.com?subject=Media%20kit%20request">Request the media kit</a>
+</div>
+</div>
+</section><section id="process">
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="procNo">How it works</span>
+<h2 data-i18n="procTitle">Three steps</h2>
+</div>
+<p data-i18n="procDesc">No back-and-forth, no surprise invoices. This is the whole process.</p>
+</div>
+<ol class="steps">
+<li>
+<span class="step-n">01</span>
+<h3 data-i18n="proc1t">Send the form</h3>
+<p data-i18n="proc1b">You get a reply the same business day with a fixed price and an available date.</p>
+</li>
+<li>
+<span class="step-n">02</span>
+<h3 data-i18n="proc2t">We shoot</h3>
+<p data-i18n="proc2b">60–90 minutes at the agreed location. I send a short prep checklist beforehand so the car is camera-ready.</p>
+</li>
+<li>
+<span class="step-n">03</span>
+<h3 data-i18n="proc3t">You get the files</h3>
+<p data-i18n="proc3b">Edited images in 2–3 business days — web and print sizes, licensed for your use.</p>
+</li>
+</ol>
+<ul class="badges">
+<li data-i18n="badge1">Licensed commercial drone pilot (Transport Canada)</li>
+<li data-i18n="badge2">Insured · GST/HST invoices</li>
+<li data-i18n="badge3">Rain date rescheduled free</li>
+<li data-i18n="badge4">One revision round included</li>
+</ul>
 </section>
-
 <!-- ============ REAL ESTATE ============ -->
-<section id="re" class="re">
-  <div class="sect-head">
-    <div>
-      <span class="no" data-i18n="reNo">05 — Real Estate</span>
-      <h2 data-i18n="reTitle">Homes &amp; Spaces</h2>
-    </div>
-    <p data-i18n="reDesc">Interior &amp; exterior photography for listings, developers and agents — bright, wide, built to sell.</p>
-  </div>
-  <div class="re-suites">
+<section class="re" id="re">
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="reNo">03 — Real Estate</span>
+<h2 data-i18n="reTitle">Homes &amp; Spaces</h2>
+</div>
+<p data-i18n="reDesc">Interior &amp; exterior photography for listings, developers and agents — bright, wide, built to sell.</p>
+</div>
+<div class="re-suites">
 <div class="re-suite">
-      <h3 class="re-suite-name">Private Residence</h3>
-      <div class="re-grid">
-        <div class="re-card tall"><img src="photos/web/re_01.jpg" alt="Private Residence" loading="lazy"></div>
-        <div class="re-card tall"><img src="photos/web/re_02.jpg" alt="Private Residence" loading="lazy"></div>
-        <div class="re-card"><img src="photos/web/re_03.jpg" alt="Private Residence" loading="lazy"></div>
-      </div>
-    </div>
+<h3 class="re-suite-name">West Vancouver · main residence</h3>
+<div class="re-grid">
+<div class="re-card tall"><img alt="West Vancouver residence · foyer and staircase" loading="lazy" src="photos/web/re_01.jpg"/></div>
+<div class="re-card tall"><img alt="West Vancouver residence · dining room" loading="lazy" src="photos/web/re_02.jpg"/></div>
+<div class="re-card"><img alt="West Vancouver residence · pool and exterior at dusk" loading="lazy" src="photos/web/re_03.jpg"/></div>
+</div>
+</div>
 <div class="re-suite">
-      <h3 class="re-suite-name">Private Residence</h3>
-      <div class="re-grid">
-        <div class="re-card"><img src="photos/web/re_04.jpg" alt="Private Residence" loading="lazy"></div>
-        <div class="re-card"><img src="photos/web/re_05.jpg" alt="Private Residence" loading="lazy"></div>
-        <div class="re-card"><img src="photos/web/re_06.jpg" alt="Private Residence" loading="lazy"></div>
-      </div>
-    </div>
+<h3 class="re-suite-name">Richmond · 4,200 sq ft</h3>
+<div class="re-grid">
+<div class="re-card"><img alt="Richmond residence · staircase and entry" loading="lazy" src="photos/web/re_04.jpg"/></div>
+<div class="re-card"><img alt="Richmond residence · media room" loading="lazy" src="photos/web/re_05.jpg"/></div>
+<div class="re-card"><img alt="Richmond residence · rear exterior and pool" loading="lazy" src="photos/web/re_06.jpg"/></div>
+</div>
+</div>
 <div class="re-suite">
-      <h3 class="re-suite-name">Private Residence</h3>
-      <div class="re-grid">
-        <div class="re-card tall"><img src="photos/web/re_07.jpg" alt="Private Residence" loading="lazy"></div>
-        <div class="re-card"><img src="photos/web/re_08.jpg" alt="Private Residence" loading="lazy"></div>
-        <div class="re-card"><img src="photos/web/re_09.jpg" alt="Private Residence" loading="lazy"></div>
-      </div>
-    </div>
-
-  </div>
-  <p class="re-note" data-i18n="reNote">Selecting final frames — full suites on request.</p>
+<h3 class="re-suite-name">Coal Harbour · condo</h3>
+<div class="re-grid">
+<div class="re-card tall"><img alt="Coal Harbour condo · living room" loading="lazy" src="photos/web/re_07.jpg"/></div>
+<div class="re-card"><img alt="Coal Harbour condo · bedroom and city view" loading="lazy" src="photos/web/re_08.jpg"/></div>
+<div class="re-card"><img alt="Coal Harbour condo · exterior" loading="lazy" src="photos/web/re_09.jpg"/></div>
+</div>
+</div>
+</div>
+<p class="re-note" data-i18n="reNote">Selecting final frames — full suites on request.</p>
 </section>
-
 <!-- ============ REAL ESTATE RATES ============ -->
 <section class="quote-sec" id="quote-re">
-  <div class="sect-head">
-    <div>
-      <span class="no" data-i18n="qrNo">07 — Real Estate Rates</span>
-      <h2 data-i18n="qrTitle">Price your listing</h2>
-    </div>
-    <p data-i18n="qrDesc">Choose the size of the home, how many photos you need and any add-ons. Adjust anything before you send the request.</p>
-  </div>
-  <div id="qw-quote-re"></div>
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="qrNo">04 — Real Estate Pricing</span>
+<h2 data-i18n="qrTitle">Price your listing</h2>
+</div>
+<p data-i18n="qrDesc">Choose the size of the home, how many photos you need and any add-ons. Adjust anything before you send the request.</p>
+</div>
+<div id="qw-quote-re"></div>
 </section>
 
-<section class="about" id="drone">
-  <div class="sect-head">
-    <div>
-      <span class="no" data-i18n="droneNo">03 — Drone</span>
-      <h2 data-i18n="droneTitle">From Above</h2>
-    </div>
-    <p data-i18n="droneDesc">Commercial drone pilot — aerial stills from the archive.</p>
-  </div>
-  <div class="drone-grid">
-    <div class="drone-shot lg"><img src="photos/drone/d01.jpg" alt="Aerial still" loading="lazy"><video class="drone-vid" muted playsinline loop preload="auto" src="photos/drone/hover_d01.mp4"></video></div>
-    <div class="drone-shot"><img src="photos/drone/d02.jpg" alt="Aerial still" loading="lazy"><video class="drone-vid" muted playsinline loop preload="auto" src="photos/drone/hover_d02.mp4"></video></div>
-    <div class="drone-shot"><img src="photos/drone/d03.jpg" alt="Aerial still" loading="lazy"><video class="drone-vid" muted playsinline loop preload="auto" src="photos/drone/hover_d03.mp4"></video></div>
-    <div class="drone-shot"><img src="photos/drone/d04.jpg" alt="Aerial still" loading="lazy"><video class="drone-vid" muted playsinline loop preload="auto" src="photos/drone/hover_d04.mp4"></video></div>
-    <div class="drone-shot"><img src="photos/drone/d05.jpg" alt="Aerial still" loading="lazy"><video class="drone-vid" muted playsinline loop preload="auto" src="photos/drone/hover_d05.mp4"></video></div>
-  </div>
+<section class="about drone-service" id="drone">
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="droneNo">05 — Aerial / Drone</span>
+<h2 data-i18n="droneTitle">A different perspective.</h2>
+</div>
+<p data-i18n="droneDesc">Professional aerial photography for property, automotive and commercial projects across Metro Vancouver. Transport Canada Advanced certified — the certification that controlled airspace and built-up area work requires.</p>
+</div>
+<div class="drone-service-grid">
+<div class="drone-copy">
+<p class="drone-lead" data-i18n="droneLead">Aerial coverage works best when it adds context: the property and its surroundings, the scale of a commercial site, or the establishing frame that makes an automotive project feel bigger.</p>
+<div class="drone-use-grid">
+<div><strong data-i18n="droneUse1t">Property &amp; Real Estate</strong><span data-i18n="droneUse1b">Exterior aerials, views, neighbourhood context and development coverage.</span></div>
+<div><strong data-i18n="droneUse2t">Commercial &amp; Construction</strong><span data-i18n="droneUse2b">Buildings, sites, progress documentation and marketing imagery.</span></div>
+<div><strong data-i18n="droneUse3t">Automotive &amp; Events</strong><span data-i18n="droneUse3b">Establishing shots and aerial coverage for larger automotive projects.</span></div>
+<div><strong data-i18n="droneUse4t">Brand Content</strong><span data-i18n="droneUse4b">High-impact stills for websites, campaigns and social content.</span></div>
+</div>
+<div class="drone-credentials">
+<span data-i18n="droneCred1">Transport Canada Advanced Certified</span>
+<span data-i18n="droneCred2">Commercial UAV experience</span>
+<span data-i18n="droneCred3">Site &amp; flight planning</span>
+</div>
+<div class="cta-row drone-actions">
+<a class="btn btn-solid project-link" data-project="Drone / Aerial" data-i18n="droneCta1" href="#contact">Request drone availability</a>
+<a class="btn btn-ghost" data-i18n="droneCta2" href="mailto:yuqiworks@gmail.com?subject=Aerial%20project%20inquiry">Ask about a project</a>
+</div>
+</div>
+<div class="drone-grid">
+<div class="drone-shot"><img src="photos/drone/d01.jpg" alt="Professional aerial photography" loading="lazy"><video class="drone-vid" muted playsinline loop preload="metadata" src="photos/drone/hover_d01.mp4"></video></div>
+<div class="drone-shot"><img src="photos/drone/d02.jpg" alt="Aerial property and commercial imaging" loading="lazy"><video class="drone-vid" muted playsinline loop preload="metadata" src="photos/drone/hover_d02.mp4"></video></div>
+<div class="drone-shot"><img src="photos/drone/d03.jpg" alt="Metro Vancouver aerial photography" loading="lazy"><video class="drone-vid" muted playsinline loop preload="metadata" src="photos/drone/hover_d03.mp4"></video></div>
+</div>
+</div>
 </section>
 
 <!-- ============ ABOUT ============ -->
-<!-- ============ GEAR ============ -->
-<section class="about" id="gear">
-  <div class="sect-head">
-    <div>
-      <span class="no" data-i18n="gearNo">04 — Gear</span>
-      <h2 data-i18n="gearTitle">Gear List</h2>
-    </div>
-    <p data-i18n="gearDesc">What I shoot with — bodies, glass and the machine above.</p>
-  </div>
-  <div class="gear-grid">
-    <div class="gear-item">
-      <div class="gear-top"><h3>Sony A7R III</h3><span class="gear-tag" data-i18n="gearTag1">Camera</span></div>
-      <p data-i18n="gearD1">42MP full-frame · stills workhorse for cars &amp; events</p>
-    </div>
-    <div class="gear-item">
-      <div class="gear-top"><h3 data-i18n="gearC1">Cinema Cameras</h3><span class="gear-tag" data-i18n="gearTag2">Cinema</span></div>
-      <ul class="gear-lens">
-        <li>Sony FX3</li>
-        <li>Sony FX6</li>
-        <li>Z-CAM E2-F6 · Full-Frame</li>
-      </ul>
-    </div>
-    <div class="gear-item">
-      <div class="gear-top"><h3>Sony G Master</h3><span class="gear-tag" data-i18n="gearTag3">Lenses</span></div>
-      <ul class="gear-lens">
-        <li>16-35mm f/2.8</li>
-        <li>24-70mm f/2.8</li>
-        <li>70-200mm f/2.8</li>
-        <li>50-150mm f/2.0</li>
-        <li>50mm f/1.2</li>
-        <li>85mm f/1.4</li>
-      </ul>
-    </div>
-    <div class="gear-item">
-      <div class="gear-top"><h3>DJI Inspire 2 · X7</h3><span class="gear-tag" data-i18n="gearTag4">Drone</span></div>
-      <ul class="gear-lens">
-        <li>Zenmuse X7</li>
-        <li>DL 16mm</li>
-        <li>DL 24mm</li>
-        <li>DL 35mm</li>
-        <li>DL 50mm</li>
-      </ul>
-    </div>
-    <div class="gear-item">
-      <div class="gear-top"><h3 data-i18n="gearA1">Rig &amp; Support</h3><span class="gear-tag" data-i18n="gearTag5">Accessories</span></div>
-      <ul class="gear-lens">
-        <li>Gimbal</li>
-        <li>Car Mount</li>
-        <li>Jib Arm</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <section class="about" id="about">
-  <div class="sect-head">
-    <div>
-      <span class="no" data-i18n="aboutNo">02 — About</span>
-      <h2 data-i18n="aboutTitle">The Person<br>Behind The Lens</h2>
-    </div>
-  </div>
-  <div class="about-grid">
-    <div class="about-copy">
-      <p><span class="drop" data-i18n="aboutDrop">I</span><strong data-i18n="aboutL1">'ve been shooting cars in Vancouver for over a decade</strong><span data-i18n="aboutR1"> — from weekend meet-ups and canyon runs to the grid of the Diamond Rally, where I served as staff photographer. A commercial drone licence means I'm not just parked at ground level: the shot above the car matters as much as the one at bumper height.</span></p>
-      <p data-i18n="aboutP2">Shooting with Sony full-frame — A7R III stills, FX3/FX6 and Z-CAM E2-F6 for motion — from canyon runs to car shows, I chase the frame that makes metal feel alive: paint under light, motion frozen, the environment doing half the work.</p>
-      <p data-i18n="aboutP3">Based in Vancouver BC. Available for events, launches, track days, and portrait-style car features. If you like my work, feel free to share it — credit is always appreciated.</p>
-    </div>
-    <ul class="cred-list">
-      <li><span class="k" data-i18n="cred1k">Experience</span><span class="v" data-i18n="cred1v">10+ years</span></li>
-      <li><span class="k" data-i18n="cred2k">Specialty</span><span class="v" data-i18n="cred2v">Automotive · Drone · Event</span></li>
-      <li><span class="k" data-i18n="cred3k">Credential</span><span class="v hl" data-i18n="cred3v">Commercial Drone Pilot</span></li>
-      <li><span class="k" data-i18n="cred4k">Gig Highlight</span><span class="v hl" data-i18n="cred4v">Diamond Rally Crew</span></li>
-      <li><span class="k" data-i18n="cred5k">Ride</span><span class="v" data-i18n="cred5v">Camaro ZL1 · Widebody RS</span></li>
-      <li><span class="k" data-i18n="cred6k">Base</span><span class="v" data-i18n="cred6v">Vancouver, BC</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <h2 data-i18n="contactTitle">Let's shoot<br><em>your car.</em></h2>
-  <div class="socials">
-    <a href="https://www.instagram.com/yuqiwang_w/" target="_blank" rel="noopener">Instagram — @yuqiwang_w</a>
-    <a href="mailto:yuqiworks@gmail.com" data-i18n="mailCta">yuqiworks@gmail.com</a>
-  </div>
-
-  <div class="quote-form-wrap">
-    <h3 class="quote-title" data-i18n="formTitle">Send your request</h3>
-    <form id="quote-form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="4407af5b-5b7f-4bc7-bbbe-d58585b79877">
-      <input type="hidden" name="subject" value="New Quote Request — YUQI WORKS">
-      <input type="hidden" name="from_name" value="YUQI WORKS Website">
-      <div class="qf-row">
-        <div class="qf-field">
-          <label for="qf-name" data-i18n="quoteName">Name</label>
-          <input id="qf-name" name="name" type="text" required placeholder="Your name">
-        </div>
-        <div class="qf-field">
-          <label for="qf-email" data-i18n="quoteEmail">Email</label>
-          <input id="qf-email" name="email" type="email" required placeholder="you@email.com">
-        </div>
-      </div>
-      <div class="qf-row">
-        <div class="qf-field">
-          <label for="qf-type" data-i18n="quoteType">Project Type</label>
-          <select id="qf-type" name="project_type">
-            <option value="Automotive">Automotive</option>
-            <option value="Real Estate">Real Estate</option>
-            <option value="Drone / Aerial">Drone / Aerial</option>
-            <option value="Event">Event</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div class="qf-field">
-          <label for="qf-date" data-i18n="quoteDate">Preferred Date <span class="opt">(optional)</span></label>
-          <input id="qf-date" name="date" type="date">
-        </div>
-      </div>
-      <div class="qf-field">
-        <label for="qf-msg" data-i18n="quoteMsg">Project Details</label>
-        <textarea id="qf-msg" name="message" rows="4" placeholder="Tell me about your shoot…" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-solid qf-submit" data-i18n="quoteSend">Send Request</button>
-      <p class="qf-status" id="qf-status" role="status"></p>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <span>© 2026 YUQI WORKS · Vancouver BC · yuqiworks@gmail.com</span>
-  <span data-i18n="footNote">Shot on location across the Pacific Northwest</span>
-</footer>
-
-
-<!-- ============ LIGHTBOX ============ -->
-<div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
-  <span class="lb-hint" data-i18n="lbHint">Gallery</span>
-  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
-  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
-  <img class="lb-img" id="lb-img" alt="photo">
-  <button class="lb-nav lb-next" id="lb-next" aria-label="Next">&#8250;</button>
-  <div class="lb-caption" id="lb-caption"></div>
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="aboutNo">06 — About</span>
+<h2 data-i18n="aboutTitle">The Person<br/>Behind The Lens</h2>
 </div>
+</div>
+<div class="about-grid">
+<div class="about-copy">
+<p><span class="drop" data-i18n="aboutDrop">I</span><strong data-i18n="aboutL1">'ve been shooting cars for more than a decade</strong><span data-i18n="aboutR1"> — from private owners and dealership inventory to automotive events and Diamond Rally, where I worked as staff photographer.</span></p>
+<p data-i18n="aboutP2">My approach is simple: clean light, deliberate angles and editing that makes the car feel premium without making it look artificial.</p>
+<p data-i18n="aboutP3">Based in Metro Vancouver and available for automotive, property, event and selected commercial aerial projects.</p>
+</div>
+<ul class="cred-list">
+<li><span class="k" data-i18n="cred1k">Experience</span><span class="v" data-i18n="cred1v">10+ years</span></li>
+<li><span class="k" data-i18n="cred2k">Specialty</span><span class="v" data-i18n="cred2v">Automotive · Drone · Event</span></li>
+<li><span class="k" data-i18n="cred3k">Credential</span><span class="v hl" data-i18n="cred3v">Commercial Drone Pilot</span></li>
+<li><span class="k" data-i18n="cred4k">Gig Highlight</span><span class="v hl" data-i18n="cred4v">Diamond Rally Crew</span></li>
+<li><span class="k" data-i18n="cred5k">Ride</span><span class="v" data-i18n="cred5v">Camaro ZL1 · Widebody RS</span></li>
+<li><span class="k" data-i18n="cred6k">Base</span><span class="v" data-i18n="cred6v">Vancouver, BC</span></li>
+</ul>
+</div>
+<p class="equipment-note" data-i18n="equipmentNote"><strong>Equipment</strong> Professional Sony full-frame camera system with 16–35mm, 24–70mm, 70–200mm and fast prime lenses. Lighting and support equipment are added when the brief calls for them.</p>
+</section>
 
+<!-- ============ PROCESS ============ -->
 
+<!-- ============ FAQ ============ -->
+<section class="faq-sec" id="faq">
+<div class="sect-head">
+<div>
+<span class="no" data-i18n="faqNo">FAQ</span>
+<h2 data-i18n="faqTitle">Before you ask</h2>
+</div>
+<p data-i18n="faqDesc">Still unsure? Send the form — questions are free.</p>
+</div>
+<div class="faq-list">
+<details>
+<summary data-i18n="faq1q">How fast can you shoot?</summary>
+<p data-i18n="faq1a">Usually within 3–5 days, and same-week for listings when the calendar allows.</p>
+</details>
+<details>
+<summary data-i18n="faq2q">What if it rains?</summary>
+<p data-i18n="faq2a">We reschedule at no cost. In Vancouver, I plan for it.</p>
+</details>
+<details>
+<summary data-i18n="faq3q">Does the car need to be clean?</summary>
+<p data-i18n="faq3a">Yes — a wash is the one thing that changes everything. I'll send a short prep list before the shoot.</p>
+</details>
+<details>
+<summary data-i18n="faq4q">Where can I use the photos?</summary>
+<p data-i18n="faq4a">Personal and own-channel use is included in every package. Paid advertising and third-party use are quoted separately.</p>
+</details>
+<details>
+<summary data-i18n="faq5q">Do you travel outside Vancouver?</summary>
+<p data-i18n="faq5a">Yes — Richmond, Burnaby, Surrey, Coquitlam, the North Shore and the Sea-to-Sky. Longer trips are confirmed in the quote.</p>
+</details>
+<details>
+<summary data-i18n="faq6q">Can you shoot a whole batch of inventory?</summary>
+<p data-i18n="faq6a">Yes. Dealership batch rates start at 5 cars per visit.</p>
+</details>
+</div>
+</section>
+<!-- ============ LEAD MAGNET ============ -->
+<section class="lead" id="presets">
+<div>
+<span class="no" data-i18n="leadNo">Free download</span>
+<h2 data-i18n="leadTitle">Two of my Lightroom presets</h2>
+<p data-i18n="leadDesc">The exact looks I use on Vancouver car shoots — <strong>Deep Paint</strong> and <strong>Bright Listings</strong>. Leave your email and I'll send both files, plus one note a month with new work and open dates. No spam, unsubscribe anytime.</p>
+</div>
+<form action="https://api.web3forms.com/submit" class="lead-form" id="preset-form" method="POST">
+<input name="access_key" type="hidden" value="4407af5b-5b7f-4bc7-bbbe-d58585b79877"/>
+<input name="subject" type="hidden" value="Preset request — YUQI WORKS"/>
+<input name="from_name" type="hidden" value="YUQI WORKS Website"/>
+<input aria-hidden="true" autocomplete="off" class="hp" name="botcheck" tabindex="-1" type="checkbox"/>
+<label class="sr-only" data-i18n="leadEmailLabel" for="pf-email">Email</label>
+<input id="pf-email" name="email" placeholder="you@email.com" required="" type="email"/>
+<button class="btn btn-solid" data-i18n="leadBtn" type="submit">Send me the presets</button>
+<p class="qf-status" id="pf-status" role="status"></p>
+<p class="lead-note" data-i18n="leadNote">One email a month at most. Unsubscribe anytime.</p>
+</form>
+</section>
+<!-- ============ PRE-CONTACT CTA ============ -->
+<section class="close-cta">
+<span class="no" data-i18n="closeNo">Ready when you are</span>
+<h2 data-i18n="closeTitle">Have a car to shoot?</h2>
+<p data-i18n="closeDesc">Tell me what you are shooting, where you are, and what the photos are for. I’ll point you to the simplest package that gets the job done.</p>
+<div class="cta-row">
+<a class="btn btn-solid" data-i18n="closeCta1" href="#quote-auto">Get an instant estimate</a>
+<a class="btn btn-ghost" data-i18n="closeCta2" href="#contact">Ask a question</a>
+</div>
+</section>
+<section class="contact" id="contact">
+<h2 data-i18n="contactTitle">Ready to shoot?<br/><em>Tell me what you need.</em></h2>
+<div class="socials">
+<a href="https://www.instagram.com/yuqiwang_w/" rel="noopener" target="_blank">Instagram — @yuqiwang_w</a>
+<a data-i18n="mailCta" href="mailto:yuqiworks@gmail.com">yuqiworks@gmail.com</a>
+</div>
+<div class="quote-form-wrap">
+<h3 class="quote-title" data-i18n="formTitle">Send your request</h3>
+<form action="https://api.web3forms.com/submit" id="quote-form" method="POST">
+<input name="access_key" type="hidden" value="4407af5b-5b7f-4bc7-bbbe-d58585b79877"/>
+<input name="subject" type="hidden" value="New Quote Request — YUQI WORKS"/>
+<input name="from_name" type="hidden" value="YUQI WORKS Website"/>
+<input aria-hidden="true" autocomplete="off" class="hp" name="botcheck" tabindex="-1" type="checkbox"/>
+<div class="qf-row">
+<div class="qf-field">
+<label data-i18n="quoteName" for="qf-name">Name</label>
+<input id="qf-name" name="name" placeholder="Your name" required="" type="text"/>
+</div>
+<div class="qf-field">
+<label data-i18n="quoteEmail" for="qf-email">Email</label>
+<input id="qf-email" name="email" placeholder="you@email.com" required="" type="email"/>
+</div>
+</div>
+<div class="qf-row">
+<div class="qf-field">
+<label data-i18n="quoteType" for="qf-type">Project Type</label>
+<select id="qf-type" name="project_type">
+<option value="Automotive">Automotive</option>
+<option value="Real Estate">Real Estate</option>
+<option value="Drone / Aerial">Drone / Aerial</option>
+<option value="Event">Event</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="qf-field">
+<label for="qf-date"><span data-i18n="quoteDate">Preferred Date</span> <span class="opt" data-i18n="optHint">(optional)</span></label>
+<input id="qf-date" name="date" type="date"/>
+</div>
+</div>
+<div class="qf-field">
+<label for="qf-loc"><span data-i18n="quoteLoc">Shoot location</span> <span class="opt" data-i18n="optHint">(optional)</span></label>
+<input id="qf-loc" name="location" placeholder="City or address — helps with travel" type="text"/>
+</div>
+<div class="qf-field">
+<label for="qf-phone"><span data-i18n="quotePhone">Phone / WeChat</span> <span class="opt" data-i18n="optHint">(optional)</span></label>
+<input id="qf-phone" name="phone" placeholder="Fastest way to reach you" type="text"/>
+</div>
+<div class="qf-field">
+<label data-i18n="quoteMsg" for="qf-msg">Project Details</label>
+<textarea id="qf-msg" name="message" placeholder="Tell me about your shoot…" required="" rows="4"></textarea>
+</div>
+<button class="btn btn-solid qf-submit" data-i18n="quoteSend" type="submit">Send Request</button>
+<p class="qf-status" id="qf-status" role="status"></p>
+</form>
+</div>
+</section>
+<footer>
+<span>© 2026 YUQI WORKS · Vancouver BC · <a href="mailto:yuqiworks@gmail.com">yuqiworks@gmail.com</a> · <a href="https://www.instagram.com/yuqiwang_w/" rel="noopener" target="_blank">Instagram</a></span>
+<span data-i18n="footNote">Shot on location across the Pacific Northwest</span>
+</footer>
+<!-- ============ LIGHTBOX ============ -->
+<div aria-label="Image viewer" class="lightbox" id="lightbox" role="dialog">
+<span class="lb-hint" data-i18n="lbHint">Gallery</span>
+<button aria-label="Close" class="lb-close" id="lb-close">×</button>
+<button aria-label="Previous" class="lb-nav lb-prev" id="lb-prev">‹</button>
+<img alt="photo" class="lb-img" id="lb-img"/>
+<button aria-label="Next" class="lb-nav lb-next" id="lb-next">›</button>
+<div class="lb-caption" id="lb-caption"></div>
+</div>
+<div class="site-mobile-cta" id="site-mobile-cta">
+<div><span data-i18n="mobileCtaTop">Automotive photography</span><strong data-i18n="mobileCtaPrice">From $275 CAD</strong></div>
+<a data-i18n="mobileCtaBtn" href="#quote-auto">Get estimate</a>
+</div>
 <!-- ============ FLOAT NAV ============ -->
 <div class="float-nav" id="float-nav">
-  <button class="float-btn" id="f-top" aria-label="Back to top" title="Back to top">&#8593;</button>
-  <button class="float-btn" id="f-contact" aria-label="Contact" title="Contact">&#9993;</button>
+<button aria-label="Back to top" class="float-btn" id="f-top" title="Back to top">↑</button>
+<button aria-label="Contact" class="float-btn" id="f-contact" title="Contact">✉</button>
 </div>
-
 <script>
 /* ============ i18n ============ */
 const I18N = {
   en: {
-    navWork:"Work", navRe:"Real Estate", navDrone:"Drone", navGear:"Gear", navAbout:"About", navQuote:"Pricing", navContact:"Contact", ctaQuote:"Build a Quote", fAll:"All", fCar:"Cars", fStreet:"Street", fEvent:"Events",
-    reNo:"05 — Real Estate", reTitle:"Homes & Spaces", reDesc:"Interior & exterior photography for listings, developers and agents — bright, wide, built to sell.", reNote:"Selecting final frames — full suites on request.",
-    droneNo:"03 — Drone", droneTitle:"From Above", droneDesc:"Commercial drone pilot — aerial stills from the archive.", droneV1t:"Pandapix Drone Reel",
-    gearNo:"04 — Gear", gearTitle:"Gear List", gearDesc:"What I shoot with — bodies, glass and the machine above.", gearTag1:"Camera", gearTag2:"Cinema", gearC1:"Cinema Cameras", gearTag3:"Lenses", gearTag4:"Drone", gearTag5:"Accessories", gearA1:"Rig & Support", gearD1:"42MP full-frame · stills workhorse for cars & events", gearD2:"Full-frame cinema cameras · video & aerial work", fAll:"All", fCar:"Cars", fStreet:"Street", fEvent:"Events",
+    navWork:"Work", navRe:"Real Estate", navDrone:"Drone", navGear:"Gear", navAbout:"About", navQuote:"Get a Quote", navContact:"Contact", ctaQuote:"Get an Instant Estimate", fAll:"All", fCar:"Cars", fStreet:"Street", fEvent:"Events",
+    reNo:"03 — Real Estate", reTitle:"Homes & Spaces", reDesc:"Interior & exterior photography for listings, developers and agents — bright, wide, built to sell.", reNote:"Selecting final frames — full suites on request.",
+    droneNo:"05 — Aerial / Drone", droneTitle:"A different perspective.", droneDesc:"Professional aerial photography for property, automotive and commercial projects across Metro Vancouver. Transport Canada Advanced certified — the certification that controlled airspace and built-up area work requires.", droneV1t:"Pandapix Drone Reel",
+    gearNo:"07 — Gear", gearTitle:"Gear List", gearDesc:"What I shoot with — bodies, glass and the machine above.", gearTag1:"Camera", gearTag2:"Cinema", gearC1:"Cinema Cameras", gearTag3:"Lenses", gearTag4:"Drone", gearTag5:"Accessories", gearA1:"Rig & Support", gearD1:"42MP full-frame · stills workhorse for cars & events", gearD2:"Full-frame cinema cameras · video & aerial work", fAll:"All", fCar:"Cars", fStreet:"Street", fEvent:"Events",
     heroKicker:"Automotive Photography · Vancouver BC",
-    heroTitle:"Photography,<br><span>built for speed</span>",
+    heroTitle:"Make your car<br><span>impossible to ignore.</span>",
     heroSub:"Ten years behind the lens. Commercial drone pilot and <strong>Diamond Rally</strong> staff photographer — chasing light, motion and metal across the Pacific Northwest.",
     ctaWork:"View Work", ctaContact:"Get in Touch",
     f1v:"10+", f1k:"Years Shooting", f2v:"Sony", f2k:"A7R III · FX3 · Z-CAM",
     f3v:"Diamond Rally", f3k:"Staff Photographer", f4v:"Drone", f4k:"Commercial Pilot",
     workNo:"01 — Selected Work", workTitle:"Featured Shots",
-    workDesc:"A handful of frames from the archive. Full sets on Instagram — new work drops there first.",
+    workDesc:"Selected frames from the last three years. Looking for something specific — your model, your colour, a night shot? Ask and I'll send the set.",
     w1t:"Night Run · Downtown", w2t:"Golden Hour · Sea to Sky", w3t:"Tunnel Run · Light Trails",
     w4t:"Rain City · Reflections", w5t:"Studio · Carbon Detail", w6t:"Canyon Carving · Okanagan",
     w7t:"Dusk Drift · Event Night", w8t:"Winter Shine · Cypress", w9t:"Diamond Rally · The Grid",
     w10t:"Midnight · Light Trails", w11t:"Street · Reflections", w12t:"Golden Hour · Backroads",
-    p01t:"Chevrolet Camaro ZL1", p01y:"",
+    p01t:"Chevrolet Camaro ZL1", p01y:"Private collection · Vancouver",
     p03t:"Ford Mustang GT500", p03y:"",
     p04t:"Nissan GT-R", p04y:"",
     p05t:"Ferrari 488 Pista", p05y:"",
     p06t:"Chevrolet Camaro RS", p06y:"",
     p13t:"Lamborghini Aventador SV", p13y:"",
-    p14t:"Koenigsegg Jesko · Canada Debut", p14y:"",
-    p15t:"Koenigsegg Jesko · Canada Debut", p15y:"",
+    p14t:"Koenigsegg Jesko · Canada Debut", p14y:"Media coverage · Vancouver",
+    p15t:"Koenigsegg Jesko · Canada Debut", p15y:"Showroom delivery",
     p20t:"Lamborghini Aventador SVJ", p20y:"",
     p23t:"Lamborghini Aventador SVJ", p23y:"",
     p24t:"McLaren 600LT", p24y:"",
-    p30t:"VW Golf R · Dealership", p30y:"",
+    p30t:"OpenRoad VW Burnaby · Showroom", p30y:"Dealership coverage · Burnaby",
     p32t:"VW Golf R", p32y:"",
     p33t:"VW Golf R", p33y:"",
     p51t:"Lamborghini Aventador SV", p51y:"",
@@ -1009,24 +1327,58 @@ const I18N = {
     p85t:"Life Chengdu", p85y:"",
     p86t:"Life Chengdu", p86y:"",
 
-    aboutNo:"02 — About", aboutTitle:"The Person<br>Behind The Lens",
-    aboutDrop:"I", aboutL1:"'ve been shooting cars in Vancouver for over a decade",
-    aboutR1:" — from weekend meet-ups and canyon runs to the grid of the Diamond Rally, where I served as staff photographer. A commercial drone licence means I'm not just parked at ground level: the shot above the car matters as much as the one at bumper height.",
-    aboutP2:"Shooting with Sony full-frame — A7R III stills, FX3/FX6 and Z-CAM E2-F6 for motion — from canyon runs to car shows, I chase the frame that makes metal feel alive: paint under light, motion frozen, the environment doing half the work.",
-    aboutP3:"Based in Vancouver BC. Available for events, launches, track days, and portrait-style car features. If you like my work, feel free to share it — credit is always appreciated.",
+    aboutNo:"06 — About", aboutTitle:"The Person<br>Behind The Lens",
+    aboutDrop:"I", aboutL1:"'ve been shooting cars for more than a decade",
+    aboutR1:" — from private owners and dealership inventory to automotive events and Diamond Rally, where I worked as staff photographer.",
+    aboutP2:"My approach is simple: clean light, deliberate angles and editing that makes the car feel premium without making it look artificial.",
+    aboutP3:"Based in Metro Vancouver and available for automotive, property, event and selected commercial aerial projects.",
     cred1k:"Experience", cred1v:"10+ years", cred2k:"Specialty", cred2v:"Automotive · Drone · Event",
-    cred3k:"Credential", cred3v:"Commercial Drone Pilot", cred4k:"Gig Highlight", cred4v:"Diamond Rally Crew",
+    cred3k:"Credential", cred3v:"Advanced Certified Pilot", cred4k:"Gig Highlight", cred4v:"Diamond Rally Crew",
     cred5k:"Gear", cred5v:"Sony A7R III · Z-CAM E2-F6", cred6k:"Base", cred6v:"Vancouver, BC",
-    contactTitle:"Let's shoot<br><em>your car.</em>",
-    mailCta:"yuqiworks@gmail.com", quoteTitle:"Request a Quote", calcHint:"Configure your shoot below — your choices fill in the form automatically.", formTitle:"Send your request", qaNo:"06 — Automotive Rates", qaTitle:"Build your shoot", qaDesc:"Pick a package, count the cars, add motion — the estimate updates as you go. Send it over and I'll confirm the details within a day.", qrNo:"07 — Real Estate Rates", qrTitle:"Price your listing", qrDesc:"Choose the size of the home, how many photos you need and any add-ons. Adjust anything before you send the request.", quoteName:"Name", quoteEmail:"Email", quoteType:"Project Type", quoteDate:"Preferred Date", quoteMsg:"Project Details", quoteSend:"Send Request", footNote:"Shot on location across the Pacific Northwest", lbHint:"Gallery"
+    contactTitle:"Ready to shoot?<br><em>Tell me what you need.</em>",
+    heroSub:"Professional automotive photography for <strong>private sellers, enthusiasts, collectors and dealerships</strong> across Metro Vancouver. Packages from <strong>$275 CAD</strong>, with most shoots delivered in <strong>2–3 business days</strong>.",
+    ctaWork:"See the Work",
+    f1v:"2–3 days", f1k:"Typical Delivery", f2v:"Metro", f2k:"Vancouver Service",
+    f3v:"$275 CAD", f3k:"Starting Price", f4v:"10+", f4k:"Years Shooting",
+    trustLabel:"Experience includes",
+    fitNo:"What I shoot", fitTitle:"Three kinds of work.", fitDesc:"Automotive, real estate and aerial — each has its own page with recent work, pricing and answers.",
+    fit1tag:"AUTOMOTIVE", fit1title:"Car Photography", fit1body:"Listing photos, owner and collector portraits, and dealership inventory across Metro Vancouver.", fit1price:"From $275",
+    fit2tag:"REAL ESTATE", fit2title:"Real Estate Photography", fit2body:"Interior and exterior listing photography for realtors, developers and private sellers.", fit2price:"From $185",
+    fit3tag:"AERIAL", fit3title:"Drone &amp; Aerial", fit3body:"Property, construction, automotive and brand aerials — shot by a Transport Canada Advanced certified pilot.", fit3price:"Request a quote", fitCta:"See the work →", fit1cta:"Build estimate →", fit2cta:"Build estimate →",
+    closeNo:"Ready when you are", closeTitle:"Have a car to shoot?", closeDesc:"Tell me what you are shooting, where you are, and what the photos are for. I’ll point you to the simplest package that gets the job done.", closeCta1:"Get an instant estimate", closeCta2:"Ask a question", portfolioMore:"View More Work on Instagram",
+    testiNo:"Selected clients", testiTitle:"What clients say",
+    testiDesc:"Ten years shooting in Vancouver — private owners, dealerships and realtors.",
+    procNo:"How it works", procTitle:"Three steps",
+    procDesc:"No back-and-forth, no surprise invoices. This is the whole process.",
+    proc1t:"Send the form", proc1b:"You get a reply the same business day with a fixed price and an available date.",
+    proc2t:"We shoot", proc2b:"60–90 minutes at the agreed location. I send a short prep checklist beforehand so the car is camera-ready.",
+    proc3t:"You get the files", proc3b:"Edited images in 2–3 business days — web and print sizes, licensed for your use.",
+    badge1:"Transport Canada Advanced certified drone pilot", badge2:"Insured · GST/HST invoices",
+    badge3:"Rain date rescheduled free", badge4:"One revision round included",
+    navFaq:"FAQ", dailyDriver:"<strong>From daily drivers to collector cars.</strong> If the car matters to you, it is worth photographing properly.", mobileCtaTop:"Automotive photography", mobileCtaPrice:"From $275 CAD", mobileCtaBtn:"Get estimate", equipmentNote:"<strong>Equipment</strong> Professional Sony full-frame camera system with 16–35mm, 24–70mm, 70–200mm and fast prime lenses. Lighting and support equipment are added when the brief calls for them.", droneLead:"Aerial coverage works best when it adds context: the property and its surroundings, the scale of a commercial site, or the establishing frame that makes an automotive project feel bigger.", droneUse1t:"Property & Real Estate", droneUse1b:"Exterior aerials, views, neighbourhood context and development coverage.", droneUse2t:"Commercial & Construction", droneUse2b:"Buildings, sites, progress documentation and marketing imagery.", droneUse3t:"Automotive & Events", droneUse3b:"Establishing shots and aerial coverage for larger automotive projects.", droneUse4t:"Brand Content", droneUse4b:"High-impact stills for websites, campaigns and social content.", droneCred1:"Transport Canada Advanced Certified", droneCred2:"Commercial UAV experience", droneCred3:"Site & flight planning", droneCta1:"Request drone availability", droneCta2:"Ask about a project",
+    faqNo:"FAQ", faqTitle:"Before you ask", faqDesc:"Still unsure? Send the form — questions are free.",
+    faq1q:"How fast can you shoot?", faq1a:"Usually within 3–5 days, and same-week for listings when the calendar allows.",
+    faq2q:"What if it rains?", faq2a:"We reschedule at no cost. In Vancouver, I plan for it.",
+    faq3q:"Does the car need to be clean?", faq3a:"Yes — a wash is the one thing that changes everything. I'll send a short prep list before the shoot.",
+    faq4q:"Where can I use the photos?", faq4a:"Personal and own-channel use is included in every package. Paid advertising and third-party use are quoted separately.",
+    faq5q:"Do you travel outside Vancouver?", faq5a:"Yes — Richmond, Burnaby, Surrey, Coquitlam, the North Shore and the Sea-to-Sky. Longer trips are confirmed in the quote.",
+    faq6q:"Can you shoot a whole batch of inventory?", faq6a:"Yes. Dealership batch rates start at 5 cars per visit.",
+    leadNo:"Free download", leadTitle:"Two of my Lightroom presets",
+    leadDesc:"The exact looks I use on Vancouver car shoots — <strong>Deep Paint</strong> and <strong>Bright Listings</strong>. Leave your email and I'll send both files, plus one note a month with new work and open dates. No spam, unsubscribe anytime.",
+    leadEmailLabel:"Email", leadBtn:"Send me the presets", leadNote:"One email a month at most. Unsubscribe anytime.",
+    b2bTitle:"Dealerships &amp; automotive businesses",
+    b2bDesc:"Need recurring inventory or social content? Ask about batch rates for 5+ vehicles, fixed monthly shoot days and consistent editing across every listing.",
+    b2bBtn1:"Ask for batch pricing", b2bBtn2:"Request the media kit",
+    quoteLoc:"Shoot location", quotePhone:"Phone / WeChat", optHint:"(optional)",
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"Request a Quote", calcHint:"Configure your shoot below — your choices fill in the form automatically.", formTitle:"Send your request", qaNo:"02 — Automotive Pricing", qaTitle:"Build your shoot", qaDesc:"Pick a package, count the cars, add motion — the estimate updates as you go. Send it over and I'll confirm the details within a day.", qrNo:"04 — Real Estate Pricing", qrTitle:"Price your listing", qrDesc:"Choose the size of the home, how many photos you need and any add-ons. Adjust anything before you send the request.", quoteName:"Name", quoteEmail:"Email", quoteType:"Project Type", quoteDate:"Preferred Date", quoteMsg:"Project Details", quoteSend:"Send Request", footNote:"Shot on location across the Pacific Northwest", lbHint:"Gallery"
   },
   zh: {
-    navWork:"作品", navRe:"房产", navDrone:"航拍", navGear:"器材", navAbout:"关于", navQuote:"报价", navContact:"联系", ctaQuote:"生成报价", fAll:"全部", fCar:"汽车", fStreet:"街头", fEvent:"活动",
+    navWork:"作品", navRe:"房产", navDrone:"航拍", navGear:"器材", navAbout:"关于", navQuote:"获取报价", navContact:"联系", ctaQuote:"即时估价", fAll:"全部", fCar:"汽车", fStreet:"街头", fEvent:"活动",
     reNo:"05 — 房产", reTitle:"住宅与空间", reDesc:"为房源、开发商与经纪公司拍摄的内外景——明亮、开阔、为成交而生。", reNote:"最终成片筛选中——完整套系可索取。",
-    droneNo:"03 — 航拍", droneTitle:"俯瞰风景", droneDesc:"商业无人机执照飞手 — 档案航拍画面。", droneV1t:"Pandapix 无人机卷",
+    droneNo:"05 — 航拍", droneTitle:"换一个视角。", droneDesc:"为地产、汽车与商业项目提供专业航拍服务，覆盖大温哥华地区，持加拿大交通部 Advanced（高级）执照 —— 这也是进入管制空域与建筑密集区作业所需的资质。", droneV1t:"Pandapix 无人机卷",
     gearNo:"04 — 器材", gearTitle:"器材清单", gearDesc:"我使用的拍摄设备——机身、镜头与天空之上的机器。", gearTag1:"相机", gearTag2:"视频机", gearC1:"电影机", gearTag3:"镜头", gearTag4:"无人机", gearTag5:"配件", gearA1:"辅助设备", gearD1:"4200 万像素全画幅 · 照片主力（汽车与活动）", gearD2:"全画幅电影机 · 视频与航拍", fAll:"全部", fCar:"汽车", fStreet:"街头", fEvent:"活动",
     heroKicker:"汽车摄影 · 温哥华 BC",
-    heroTitle:"为速度<br><span>而生</span>",
+    heroTitle:"让你的车<br><span>让人无法忽略。</span>",
     heroSub:"十年镜头生涯，持商业无人机执照，曾任 <strong>Diamond Rally</strong> 特聘摄影师——在太平洋西北海岸追逐光影、动感与金属质感。",
     ctaWork:"看作品", ctaContact:"联系我",
     f1v:"10+", f1k:"年拍摄经验", f2v:"Sony", f2k:"A7R III · FX3 · Z-CAM",
@@ -1048,7 +1400,7 @@ const I18N = {
     p20t:"兰博基尼 Aventador SVJ", p20y:"",
     p23t:"兰博基尼 Aventador SVJ", p23y:"",
     p24t:"迈凯轮 600LT", p24y:"",
-    p30t:"大众 Golf R · 车行", p30y:"",
+    p30t:"OpenRoad VW 本拿比 · 展厅", p30y:"车行拍摄 · 本拿比",
     p32t:"大众 Golf R", p32y:"",
     p33t:"大众 Golf R", p33y:"",
     p51t:"兰博基尼 Aventador SV", p51y:"",
@@ -1084,12 +1436,46 @@ const I18N = {
     aboutDrop:"我", aboutL1:"在温哥华拍车已经超过十年",
     aboutR1:"——从周末车聚和山路跑，到 Diamond Rally 超跑拉力的发车区（我曾担任其特聘摄影师）。持有商业无人机执照，所以我不只站在地面：车顶之上的视角，和保险杠高度的视角同样重要。",
     aboutP2:"手持索尼全画幅系统——A7R III 拍摄静态，FX3/FX6 与 Z-CAM E2-F6 负责动态——从山路跑到车展，我追逐的是让金属活起来的画面：光影下的漆面、凝固的动感、与场景融为一体的环境叙事。",
-    aboutP3:"常驻温哥华 BC。承接活动、新车发布、赛道日和汽车写真风格拍摄。喜欢我的作品欢迎转发——注明出处即可。",
+    aboutP3:"常驻温哥华 BC。承接活动、新车发布、赛道日和汽车写真风格拍摄，覆盖大温地区与海天公路沿线。有想拍的档期直接告诉我，当天就能确认有没有空。",
     cred1k:"经验", cred1v:"10年以上", cred2k:"专长", cred2v:"汽车 · 航拍 · 活动",
-    cred3k:"资质", cred3v:"商业无人机执照", cred4k:"高光履历", cred4v:"Diamond Rally 团队",
+    cred3k:"资质", cred3v:"加拿大交通部 Advanced 执照", cred4k:"高光履历", cred4v:"Diamond Rally 团队",
     cred5k:"器材", cred5v:"索尼 A7R III · Z-CAM E2-F6", cred6k:"常驻", cred6v:"温哥华 BC",
-    contactTitle:"来拍<br><em>你的车。</em>",
-    mailCta:"yuqiworks@gmail.com", quoteTitle:"获取报价", calcHint:"先在下面配置拍摄内容，表单会自动填好。", formTitle:"发送询价", qaNo:"06 — 汽车报价", qaTitle:"配置你的拍摄", qaDesc:"选套餐、数车辆、加动态，价格随选择实时更新。直接发送，我会在一天内确认细节。", qrNo:"07 — 房产报价", qrTitle:"房源报价", qrDesc:"选择房屋面积、照片数量与附加项，发送前随时可以调整。", quoteName:"姓名", quoteEmail:"邮箱", quoteType:"项目类型", quoteDate:"期望日期", quoteMsg:"项目详情", quoteSend:"发送请求", footNote:"拍摄地：太平洋西北海岸各处", lbHint:"作品集"
+    contactTitle:"准备开拍？<br><em>告诉我你的需求。</em>",
+    heroSub:"大温哥华地区专业汽车摄影，为<strong>卖车车主、爱好者、收藏家与车行</strong>提供拍摄。套餐 <strong>$275 CAD 起</strong>，多数项目在 <strong>2–3 个工作日</strong>交付。",
+    ctaWork:"看作品",
+    f1v:"2–3 天", f1k:"常规交付", f2v:"大温", f2k:"上门拍摄",
+    f3v:"$275 CAD", f3k:"起步价", f4v:"10+", f4k:"拍摄年限",
+    trustLabel:"相关经验",
+    fitNo:"拍摄门类", fitTitle:"三种活。", fitDesc:"汽车、房产、航拍 —— 每一类都有独立页面：近期作品、报价与常见问题。",
+    fit1tag:"汽车摄影", fit1title:"汽车摄影", fit1body:"车辆挂牌照、车主与收藏级写真，以及车行库存批量拍摄，覆盖大温地区。", fit1price:"$275 起",
+    fit2tag:"房产摄影", fit2title:"房产摄影", fit2body:"为经纪、开发商与私人卖家提供房源内外景拍摄。", fit2price:"$185 起",
+    fit3tag:"航拍", fit3title:"航拍与无人机", fit3body:"房产、工程、汽车与品牌航拍 —— 持加拿大交通部 Advanced 执照。", fit3price:"按项目报价", fitCta:"看作品 →", fit1cta:"开始估价 →", fit2cta:"开始估价 →",
+    closeNo:"随时可以开始", closeTitle:"有车要拍？", closeDesc:"告诉我拍什么车、在哪里、照片准备怎么使用。我会帮你选择最简单、最合适的方案。", closeCta1:"立即估价", closeCta2:"先问个问题", portfolioMore:"在 Instagram 查看更多作品",
+    testiNo:"部分客户", testiTitle:"客户怎么说",
+    testiDesc:"在温哥华拍了十年——车主、车行与地产经纪。",
+    procNo:"拍摄流程", procTitle:"三步完成",
+    procDesc:"不用反复沟通，没有意外账单。整个流程就这三步。",
+    proc1t:"发送需求", proc1b:"同一个工作日内回复，给到确定报价和可选档期。",
+    proc2t:"现场拍摄", proc2b:"约定地点拍摄 60–90 分钟。拍摄前我会发送简短准备清单，让车辆提前进入最佳状态。",
+    proc3t:"交付成片", proc3b:"2–3 个工作日交付，网络与印刷尺寸齐全，授权清晰。",
+    badge1:"加拿大交通部 Advanced 高级执照", badge2:"已投保 · 可开 GST/HST 发票",
+    badge3:"下雨免费改期", badge4:"含一轮免费修图",
+    navFaq:"常见问题", dailyDriver:"<strong>从日常代步车到收藏级车型都欢迎。</strong> 只要这台车对你重要，就值得认真拍好。", mobileCtaTop:"汽车摄影", mobileCtaPrice:"$275 CAD 起", mobileCtaBtn:"立即估价", equipmentNote:"<strong>器材</strong> 专业 Sony 全画幅系统，覆盖 16–35mm、24–70mm、70–200mm 以及大光圈定焦镜头；根据项目需要搭配灯光与支撑设备。", droneLead:"航拍真正有价值的地方是补足地面视角看不到的关系：房产与周边环境、商业项目的规模，或让汽车项目更完整的建立镜头。", droneUse1t:"地产与房产", droneUse1b:"建筑外观、景观视野、社区环境与开发项目航拍。", droneUse2t:"商业与工程", droneUse2b:"建筑、场地、工程进度记录与商业宣传图像。", droneUse3t:"汽车与活动", droneUse3b:"大型汽车项目、活动与品牌内容的建立镜头和航拍覆盖。", droneUse4t:"品牌内容", droneUse4b:"用于网站、宣传活动和社交媒体的高冲击力航拍图片。", droneCred1:"加拿大交通部 Advanced 高级执照", droneCred2:"商业无人机项目经验", droneCred3:"场地与飞行规划", droneCta1:"咨询航拍档期", droneCta2:"先聊项目",
+    faqNo:"常见问题", faqTitle:"你可能想问", faqDesc:"还有疑问？直接发需求，问问题不要钱。",
+    faq1q:"多久能拍？", faq1a:"通常 3–5 天内，房源急用可以争取同一周。",
+    faq2q:"下雨怎么办？", faq2a:"免费改期。在温哥华，这是必须提前算好的变量。",
+    faq3q:"车需要洗干净吗？", faq3a:"需要——洗车是唯一一件能改变一切的事。拍摄前我会发一份简短准备清单。",
+    faq4q:"照片可以用在哪里？", faq4a:"所有套餐都包含个人与自有渠道使用。付费广告与第三方使用需要单独报价。",
+    faq5q:"温哥华以外接单吗？", faq5a:"接。列治文、本拿比、素里、高贵林、北岸以及海天公路沿线，远程会在报价里确认。",
+    faq6q:"能一次拍一批库存车吗？", faq6a:"可以。车行批量价从每次 5 台起。",
+    leadNo:"免费下载", leadTitle:"两个我在用的 Lightroom 预设",
+    leadDesc:"温哥华拍车时真正在用的两个预设——<strong>Deep Paint</strong>（深漆）和 <strong>Bright Listings</strong>（明亮房源）。留下邮箱，我把文件发给你，之后每月一封新作品与空档通知。不骚扰，随时退订。",
+    leadEmailLabel:"邮箱", leadBtn:"把预设发给我", leadNote:"每月最多一封，随时可退订。",
+    b2bTitle:"车行与汽车相关商家",
+    b2bDesc:"需要持续拍库存车或社交内容？5 台以上可询批量价，也可安排固定月度拍摄日，并保持所有车辆的后期风格一致。",
+    b2bBtn1:"咨询批量报价", b2bBtn2:"索取 Media Kit",
+    quoteLoc:"拍摄地点", quotePhone:"电话 / 微信", optHint:"（可选）",
+    mailCta:"yuqiworks@gmail.com", quoteTitle:"获取报价", calcHint:"先在下面配置拍摄内容，表单会自动填好。", formTitle:"发送询价", qaNo:"02 — 汽车报价", qaTitle:"配置你的拍摄", qaDesc:"选套餐、数车辆、加动态，价格随选择实时更新。直接发送，我会在一天内确认细节。", qrNo:"04 — 房产报价", qrTitle:"房源报价", qrDesc:"选择房屋面积、照片数量与附加项，发送前随时可以调整。", quoteName:"姓名", quoteEmail:"邮箱", quoteType:"项目类型", quoteDate:"期望日期", quoteMsg:"项目详情", quoteSend:"发送请求", footNote:"拍摄地：太平洋西北海岸各处", lbHint:"作品集"
   }
 };
 function applyLang(lang){
@@ -1109,15 +1495,26 @@ document.querySelectorAll('.lang button').forEach(b => {
 });
 applyLang((function(){ try{ return localStorage.getItem('yuqi-lang') || 'en'; }catch(e){ return 'en'; } })());
 
-/* ============ FILTER ============ */
-document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('on', x === b));
-  const f = b.dataset.f;
-  document.querySelectorAll('.work-card').forEach(c => {
-    c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
-  });
-}));
 
+/* ============ MOBILE CONVERSION CTA ============ */
+(function(){
+  const bar=document.getElementById('site-mobile-cta');
+  const quote=document.getElementById('quote-auto');
+  const contact=document.getElementById('contact');
+  if(!bar || !('IntersectionObserver' in window)) return;
+  const visible=new Set();
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>e.isIntersecting?visible.add(e.target):visible.delete(e.target));
+    bar.classList.toggle('hide',visible.size>0);
+  },{threshold:.08});
+  if(quote) io.observe(quote); if(contact) io.observe(contact);
+})();
+
+/* project CTA preselects the short inquiry form */
+document.querySelectorAll('.project-link[data-project]').forEach(a=>a.addEventListener('click',()=>{
+  const sel=document.getElementById('qf-type');
+  if(sel) sel.value=a.dataset.project;
+}));
 
 /* ============ FILTER ============ */
 document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
@@ -1171,6 +1568,54 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
   onScroll();
 })();
 
+/* ============ HERO SLIDESHOW ============ */
+(function(){
+  const slides = Array.prototype.slice.call(document.querySelectorAll('.hero-slide'));
+  if (slides.length < 2) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let i = 0;
+  window.setInterval(function(){
+    slides[i].classList.remove('on');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('on');
+  }, 6000);
+})();
+
+
+/* ============ PRESET LEAD FORM ============ */
+(function(){
+  const form = document.getElementById('preset-form');
+  const status = document.getElementById('pf-status');
+  if (!form || !status) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const hp = form.querySelector('[name="botcheck"]');
+    if (hp && hp.checked) return;
+    status.textContent = 'Sending…';
+    status.className = 'qf-status';
+    try {
+      const r = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+      });
+      const j = await r.json();
+      if (j.success) {
+        status.textContent = 'Check your inbox — the presets are on the way.';
+        status.className = 'qf-status ok';
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong — email me at yuqiworks@gmail.com';
+        status.className = 'qf-status err';
+      }
+    } catch (err) {
+      status.textContent = 'Network error — email me at yuqiworks@gmail.com';
+      status.className = 'qf-status err';
+    }
+  });
+})();
+
+
 /* ============ MOBILE NAV TOGGLE ============ */
 (function(){
   const btn = document.querySelector('.nav-toggle');
@@ -1196,6 +1641,8 @@ document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click'
   if (!form) return;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const hp = form.querySelector('[name="botcheck"]');
+    if (hp && hp.checked) return;
     const key = form.querySelector('input[name="access_key"]').value;
     if (!key || key.includes('PLACEHOLDER')) {
       status.textContent = 'Form not configured yet — email us directly instead.';
